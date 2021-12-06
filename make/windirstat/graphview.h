@@ -77,8 +77,9 @@ protected:
 	CSize m_dimmedSize;				// Size of bitmap m_dimmed
 	CBitmap m_dimmed;				// Dimmed view. Used during refresh to avoid the ooops-effect.
 	UINT_PTR m_timer;				// We need a timer to realize when the mouse left our window.
+	CString m_strTooltip;			// display text for tooltip
 
-
+	virtual INT_PTR OnToolHitTest(CPoint point, TOOLINFO* pTI) const;
 
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnSize(UINT nType, int cx, int cy);
@@ -88,7 +89,8 @@ protected:
 	afx_msg void OnContextMenu(CWnd *pWnd, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnDestroy();
-	afx_msg void OnTimer(UINT nIDEvent);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnGetTooltipText(NMHDR* pNMHDR, LRESULT* pResult);
 
 public:
 	#ifdef _DEBUG

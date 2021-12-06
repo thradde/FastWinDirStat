@@ -46,6 +46,7 @@ BEGIN_MESSAGE_MAP(CGraphView, CView)
 	ON_WM_DESTROY()
 	ON_WM_TIMER()
 	ON_COMMAND(ID_POPUP_CANCEL, OnPopupCancel)
+	ON_NOTIFY(TTN_NEEDTEXT, 0, OnGetTooltipText)
 END_MESSAGE_MAP()
 
 
@@ -56,10 +57,32 @@ CGraphView::CGraphView()
 	m_size.cx= m_size.cy= 0;
 	m_dimmedSize.cx= m_dimmedSize.cy= 0;
 	m_timer= 0;
+	EnableToolTips(TRUE);
 }
 
 CGraphView::~CGraphView()
 {
+}
+
+void CGraphView::OnGetTooltipText(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	TOOLTIPTEXT& ttt = *((TOOLTIPTEXT*)pNMHDR);
+	ttt.lpszText = const_cast<LPTSTR>(static_cast<LPCTSTR>(m_strTooltip));
+	*pResult = 0;
+}
+
+INT_PTR CGraphView::OnToolHitTest(CPoint point, TOOLINFO* pTI) const
+{
+	INT_PTR nHit = -1;
+	if (pTI)
+	{
+		nHit = MAKELONG(point.x, point.y);
+		pTI->hwnd = m_hWnd;
+		pTI->uId = (UINT_PTR)m_hWnd;
+		pTI->uFlags |= TTF_NOTBUTTON | TTF_IDISHWND;
+		pTI->lpszText = LPSTR_TEXTCALLBACK;
+	}
+	return nHit;
 }
 
 void CGraphView::TreemapDrawingCallback()
@@ -478,7 +501,11 @@ void CGraphView::OnMouseMove(UINT /*nFlags*/, CPoint point)
 	{
 		const CItem *item= (const CItem *)m_treemap.FindItemByPoint(GetDocument()->GetZoomItem(), point);
 		if (item != NULL)
-			GetMainFrame()->SetMessageText(item->GetPath());
+		{
+			CString info = item->GetPath() + _T(" (") + FormatLongLongHuman(item->GetSize()) + _T(")");
+			GetMainFrame()->SetMessageText(info);
+			m_strTooltip = info;
+		}
 
 	}
 	if (m_timer == 0)
@@ -494,7 +521,7 @@ void CGraphView::OnDestroy()
 	CView::OnDestroy();
 }
 
-void CGraphView::OnTimer(UINT /*nIDEvent*/)
+void CGraphView::OnTimer(UINT_PTR /*nIDEvent*/)
 {
 	CPoint point;
 	GetCursorPos(&point);
