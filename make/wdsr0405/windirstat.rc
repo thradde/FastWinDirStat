@@ -173,7 +173,6 @@ BEGIN
     POPUP "&Nápovìda"
     BEGIN
         MENUITEM "&Nápovìda\tF1",                   ID_HELP_MANUAL
-        MENUITEM "&Ohlásit chybu...",     ID_HELP_REPORTBUG
         MENUITEM SEPARATOR
         MENUITEM "O &WinDirStat...",        ID_APP_ABOUT
     END
@@ -256,6 +255,76 @@ BEGIN
     VK_F5,          ID_REFRESHSELECTED,     VIRTKEY, NOINVERT
 END
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_COGNOS_PROGRESS DIALOGEX 0, 0, 310, 87
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOPMOST
+CAPTION "CognosNT"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESSBAR,"msctls_progress32",WS_BORDER,18,65,270,14
+    LTEXT           "CognosNT fast NTFS file scanner.",IDC_STATIC,18,18,270,8
+    LTEXT           "Copyright (c) 2021 T. Radde, IDEAL Software GmbH, Neuss, Germany",IDC_STATIC,18,36,270,8
+    CONTROL         "www.idealsoftware.com",IDC_MFCLINK1,"MfcLink",0x0,18,48,78,12
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG_COGNOS_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 303
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG_COGNOS_PROGRESS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_COGNOS_PROGRESS DLGINIT
+BEGIN
+    IDC_MFCLINK1, 0x37c, 185, 0
+0x4d3c, 0x4346, 0x694c, 0x6b6e, 0x555f, 0x6c72, 0x773e, 0x7777, 0x692e, 
+0x6564, 0x6c61, 0x6f73, 0x7466, 0x6177, 0x6572, 0x632e, 0x6d6f, 0x2f3c, 
+0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7255, 0x3e6c, 0x4d3c, 0x4346, 0x694c, 
+0x6b6e, 0x555f, 0x6c72, 0x7250, 0x6665, 0x7869, 0x683e, 0x7474, 0x3a70, 
+0x2f2f, 0x2f3c, 0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7255, 0x506c, 0x6572, 
+0x6966, 0x3e78, 0x4d3c, 0x4346, 0x694c, 0x6b6e, 0x545f, 0x6f6f, 0x746c, 
+0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x694c, 0x6b6e, 0x545f, 0x6f6f, 0x746c, 
+0x7069, 0x3c3e, 0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7546, 0x6c6c, 0x6554, 
+0x7478, 0x6f54, 0x6c6f, 0x6974, 0x3e70, 0x4146, 0x534c, 0x3c45, 0x4d2f, 
+0x4346, 0x694c, 0x6b6e, 0x465f, 0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 
+0x746c, 0x7069, "\076" 
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -271,7 +340,7 @@ BEGIN
     CONTROL         "",IDC_TAB,"SysTabControl32",WS_TABSTOP,7,22,259,155,
                     WS_EX_ACCEPTFILES
     DEFPUSHBUTTON   "OK",IDOK,111,180,50,12,WS_GROUP
-    CTEXT           "WinDirStat 0.0.000",IDC_CAPTION,69,7,134,8
+    CTEXT           "Fast WinDirStat 0.0.000",IDC_CAPTION,55,7,163,8
     ICON            IDR_MAINFRAME,IDC_STATIC,7,3,20,20
 END
 
@@ -750,7 +819,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_ABOUT_ABOUTTEXTss   "\r\nWinDirStat - statistika složek\r\n\r\n""Ukáže kam se podìlo volné místo Vašeho\r\ndisku a pomùže jej vyèistit.""\r\n\r\nPøeprogramováno pro MS Windows \r\nBernhardem Seifertem (mailto:%1!s!),\r\n\r\nna základì linuxového programu KDirStat Stefana Hundhammera\r\n(http://kdirstat.sourceforge.net/).\r\n\r\nWinDirStat najdete na http://%2!s!/\r\n\r\nCopyright (c) 2003-2005 Autoøi WinDirStat"
+    IDS_ABOUT_ABOUTTEXTss   "\r\nWinDirStat - statistika složek\r\n\r\n""Ukáže kam se podìlo volné místo Vašeho\r\ndisku a pomùže jej vyèistit.""\r\n\r\nPøeprogramováno pro MS Windows \r\nBernhardem Seifertem (mailto:%1!s!),\r\n\r\nna základì linuxového programu KDirStat Stefana Hundhammera\r\n(http://kdirstat.sourceforge.net/).\r\n\r\nWinDirStat najdete na http://%2!s!/\r\n\r\nCopyright (c) 2003-2021 Autoøi WinDirStat"
     IDS_ABOUT_THANKSTOTEXT  "\r\nStefanu Hundhammerovi za skvìlou linuxovou utilitku KDirStat.\r\nPoužití KDirStat (2.3.7) mi ušetøilo mnoho èasu pøi návrhu.\r\nhttp://kdirstat.sourceforge.net/\r\n\r\nAutorùm SequoiaView za ukázku, jak užiteèné mohou být stromové mapy.\r\nhttp://www.win.tue.nl/sequoiaview/\r\n\r\nJarke J. van Wijkovi, Huub van de Weteringovi, Marku Brulsovi a Kees Huizingovi\r\n za jejich informace o polštáøových a hranatých stromových mapách.\r\nhttp://www.win.tue.nl/~vanwijk/\r\n\r\nBenu Shneidermanovi za geniální myšlenku o stromových mapách -\r\nopravdu intuitivním zpùsobu vizualizace stromových dat.\r\nhttp://www.cs.umd.edu/hcil/treemap-history/\r\n\r\nMým kolegùm za zpìtnou vazbu k prvním verzím WinDirStat.\r\nhttp://www.daccord.net/\r\n\r\nBeatrix Lödige a Nicku Linesovi za betatestování.\r\n"
     IDS_ABOUT_ABOUT         "O programu..."
     IDS_ABOUT_THANKSTO      "Díky patøí:"
@@ -769,7 +838,7 @@ BEGIN
     IDS_CREATEPROCESSsFAILEDs "Vytvoøení procesu (%1!s!) selhalo: %2!s!"
     IDS_LANGUAGERESTARTNOW  "Zmìna jazyka se projeví až pøi pøíštím spuštìní programu.\r\n\r\nRestartovat WinDirStat nyní?"
     IDS_ABOUT_AUTHORS       "Autoøi"
-    IDS_ABOUT_AUTHORSTEXTs  "=== Programátoøi ===\r\n\r\nBernhard Seifert\r\nTvùrce a koordinátor projektu\r\n(mailto:%1!s!)\r\n\r\nOliver Schneider\r\n(mailto:assarbad#users.sourceforge.net)\r\n\r\n\r\n=== Pøekladatelé ===\r\n\r\n"
+    IDS_ABOUT_AUTHORSTEXTs  "=== Programátoøi ===\r\n\r\nBernhard Seifert\r\nTvùrce a koordinátor projektu\r\n(mailto:%1!s!)\r\n\r\nOliver Schneider\r\n(mailto:assarbad#users.sourceforge.net)\r\n\r\nThorsten Radde\r\n(http://www.idealsoftware.com)\r\n\r\n\r\n=== Pøekladatelé ===\r\n\r\n"
 END
 
 STRINGTABLE 

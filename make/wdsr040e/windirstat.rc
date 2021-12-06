@@ -172,7 +172,6 @@ BEGIN
     POPUP "&Súgó"
     BEGIN
         MENUITEM "&Súgó\tF1",                   ID_HELP_MANUAL
-        MENUITEM "&Hibajelentés/Visszajelzés...", ID_HELP_REPORTBUG
         MENUITEM SEPARATOR
         MENUITEM "WinDirStat &névjegye...",     ID_APP_ABOUT
     END
@@ -255,6 +254,76 @@ BEGIN
     VK_F5,          ID_REFRESHSELECTED,     VIRTKEY, NOINVERT
 END
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_COGNOS_PROGRESS DIALOGEX 0, 0, 310, 87
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOPMOST
+CAPTION "CognosNT"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESSBAR,"msctls_progress32",WS_BORDER,18,65,270,14
+    LTEXT           "CognosNT fast NTFS file scanner.",IDC_STATIC,18,18,270,8
+    LTEXT           "Copyright (c) 2021 T. Radde, IDEAL Software GmbH, Neuss, Germany",IDC_STATIC,18,36,270,8
+    CONTROL         "www.idealsoftware.com",IDC_MFCLINK1,"MfcLink",0x0,18,48,78,12
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG_COGNOS_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 303
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG_COGNOS_PROGRESS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_COGNOS_PROGRESS DLGINIT
+BEGIN
+    IDC_MFCLINK1, 0x37c, 185, 0
+0x4d3c, 0x4346, 0x694c, 0x6b6e, 0x555f, 0x6c72, 0x773e, 0x7777, 0x692e, 
+0x6564, 0x6c61, 0x6f73, 0x7466, 0x6177, 0x6572, 0x632e, 0x6d6f, 0x2f3c, 
+0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7255, 0x3e6c, 0x4d3c, 0x4346, 0x694c, 
+0x6b6e, 0x555f, 0x6c72, 0x7250, 0x6665, 0x7869, 0x683e, 0x7474, 0x3a70, 
+0x2f2f, 0x2f3c, 0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7255, 0x506c, 0x6572, 
+0x6966, 0x3e78, 0x4d3c, 0x4346, 0x694c, 0x6b6e, 0x545f, 0x6f6f, 0x746c, 
+0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x694c, 0x6b6e, 0x545f, 0x6f6f, 0x746c, 
+0x7069, 0x3c3e, 0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7546, 0x6c6c, 0x6554, 
+0x7478, 0x6f54, 0x6c6f, 0x6974, 0x3e70, 0x4146, 0x534c, 0x3c45, 0x4d2f, 
+0x4346, 0x694c, 0x6b6e, 0x465f, 0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 
+0x746c, 0x7069, "\076" 
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -270,7 +339,7 @@ BEGIN
     CONTROL         "",IDC_TAB,"SysTabControl32",WS_TABSTOP,7,22,259,155,
                     WS_EX_ACCEPTFILES
     DEFPUSHBUTTON   "OK",IDOK,111,180,50,12,WS_GROUP
-    CTEXT           "WinDirStat 0.0.000",IDC_CAPTION,69,7,134,8
+    CTEXT           "Fast WinDirStat 0.0.000",IDC_CAPTION,55,7,163,8
     ICON            IDR_MAINFRAME,IDC_STATIC,7,3,20,20
 END
 
@@ -744,7 +813,7 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_ABOUT_ABOUTTEXTss   "\r\nWinDirStat - Könyvtár statisztika\r\n\r\n""Itt megtekintheti az összes lemezterületét\r\nés segítséget kap a kitakarításhoz.""\r\n\r\nA MS Windows-hoz újraprogramozta\r\nBernhard Seifert (mailto:%1!s!),\r\n\r\naz alapot Stefan Hundhammer KDE (Linux) KDirStat programja alkotja\r\n(http://kdirstat.sourceforge.net/).\r\n\r\nA WinDirStat honlapja http://%2!s!/\r\n\r\nCopyright (c) 2003-2005 The authors of WinDirStat"
+    IDS_ABOUT_ABOUTTEXTss   "\r\nWinDirStat - Könyvtár statisztika\r\n\r\n""Itt megtekintheti az összes lemezterületét\r\nés segítséget kap a kitakarításhoz.""\r\n\r\nA MS Windows-hoz újraprogramozta\r\nBernhard Seifert (mailto:%1!s!),\r\n\r\naz alapot Stefan Hundhammer KDE (Linux) KDirStat programja alkotja\r\n(http://kdirstat.sourceforge.net/).\r\n\r\nA WinDirStat honlapja http://%2!s!/\r\n\r\nCopyright (c) 2003-2021 The authors of WinDirStat"
     IDS_ABOUT_THANKSTOTEXT  "\r\nStefan Hundhammer nagyszerû Linuxos eszköze a KDirStat.\r\nÉn már nagyon sokat használtam a KDirStat (2.3.7) programot.\r\nhttp://kdirstat.sourceforge.net/\r\n\r\nItt a SequoiaView szerzõi bemutatják, hogy a faszerkezet valójában hogyan kerül használatra.\r\nhttp://www.win.tue.nl/sequoiaview/\r\n\r\nJarke J. van Wijk, Huub van de Wetering, Mark Bruls és Kees Huizing\r\nakik elkészítették a négyszögletes faszerkezet tapétáját.\r\nhttp://www.win.tue.nl/~vanwijk/\r\n\r\nBen Shneiderman akitõl ez a szellemes faszerkezet ötlete származik\r\namely igazán intuitív módon jeleníti meg a faszerkezet tartalmát.\r\nhttp://www.cs.umd.edu/hcil/treemap-history/\r\n\r\nÕk azok a munkatársak, akik visszajelzéseket küldtek a WinDirStat végleges kiadása elõtt.\r\nhttp://www.daccord.net/\r\n\r\nBeatrix Lödige és Nick Lines bétatesztelõk.\r\n"
     IDS_ABOUT_ABOUT         "Névjegy"
     IDS_ABOUT_THANKSTO      "Köszönet"
@@ -763,7 +832,7 @@ BEGIN
     IDS_CREATEPROCESSsFAILEDs "A(z) (%1!s!) folyamat sikertelen: %2!s!"
     IDS_LANGUAGERESTARTNOW  "A nyelv módosítása addíg nem kerül érvényesítésre, amíg nem indítja újra az alkalmazást.\r\n\r\nLanguage changes take not effect until the application is restarted.\r\n\r\nÚjraindítja a WinDirStat-ot most?"
     IDS_ABOUT_AUTHORS       "Szerzõk"
-    IDS_ABOUT_AUTHORSTEXTs  "=== Programozó ===\r\n\r\nBernhard Seifert\r\nA projekt létrehozója és koordinátora\r\n(mailto:%1!s!)\r\n\r\nOliver Schneider\r\n(mailto:assarbad#users.sourceforge.net)\r\n\r\n\r\n=== Fordítók ===\r\n\r\n"
+    IDS_ABOUT_AUTHORSTEXTs  "=== Programozó ===\r\n\r\nBernhard Seifert\r\nA projekt létrehozója és koordinátora\r\n(mailto:%1!s!)\r\n\r\nOliver Schneider\r\n(mailto:assarbad#users.sourceforge.net)\r\n\r\nThorsten Radde\r\n(http://www.idealsoftware.com)\r\n\r\n\r\n=== Fordítók ===\r\n\r\n"
 END
 
 STRINGTABLE 
