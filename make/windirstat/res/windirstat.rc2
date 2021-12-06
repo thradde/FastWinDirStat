@@ -46,10 +46,10 @@ BEGIN
             VALUE "CompanyName", "Seifert"
             VALUE "FileDescription", "Windows Directory Statistics"
             VALUE "FileVersion", VN_STRING_EXE
-            VALUE "InternalName", "windirstat"
+            VALUE "InternalName", "Fast WinDirStat"
             VALUE "LegalCopyright", VN_COPYRIGHTSTRING
             VALUE "OriginalFilename", "windirstat.exe"
-            VALUE "ProductName", "WinDirStat"
+            VALUE "ProductName", "Fast WinDirStat"
             VALUE "ProductVersion", VN_STRING_EXE
         END
     END
