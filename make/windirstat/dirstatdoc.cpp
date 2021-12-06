@@ -110,7 +110,7 @@ CString CDirstatDoc::EncodeSelection(RADIO radio, CString folder, const CStringA
 		break;
 
 	case RADIO_AFOLDER:
-		ret.Format(_T("%s"), folder);
+		ret.Format(_T("%s"), (LPCTSTR)folder);
 		break;
 	}
 	return ret;
@@ -148,7 +148,7 @@ void CDirstatDoc::DecodeSelection(CString s, CString& folder, CStringArray& driv
 
 	if (sa.GetSize() > 1)
 	{
-		for (int i=0; i < sa.GetSize(); i++)
+		for (i=0; i < sa.GetSize(); i++)
 		{
 			CString d= sa[i];
 			ASSERT(d.GetLength() == 2);
@@ -804,7 +804,7 @@ void CDirstatDoc::AskForConfirmation(const USERDEFINEDCLEANUP *udc, CItem *item)
 
 	CString msg;
 	msg.FormatMessage(udc->recurseIntoSubdirectories ? IDS_RUDC_CONFIRMATIONss : IDS_UDC_CONFIRMATIONss, 
-				udc->title, item->GetPath()
+		(LPCTSTR)udc->title, (LPCTSTR)item->GetPath()
 	);
 
 	if (IDYES != AfxMessageBox(msg, MB_YESNO))
@@ -823,14 +823,14 @@ void CDirstatDoc::PerformUserDefinedCleanup(const USERDEFINEDCLEANUP *udc, CItem
 	if (isDirectory)
 	{
 		if (!FolderExists(path) && !DriveExists(path))
-			MdThrowStringExceptionF(IDS_THEDIRECTORYsDOESNOTEXIST, path);
+			MdThrowStringExceptionF(IDS_THEDIRECTORYsDOESNOTEXIST, (LPCTSTR)path);
 	}
 	else
 	{
 		ASSERT(item->GetType() == IT_FILE);
 
 		if (!FileExists(path))
-			MdThrowStringExceptionF(IDS_THEFILEsDOESNOTEXIST, path);
+			MdThrowStringExceptionF(IDS_THEFILEsDOESNOTEXIST, (LPCTSTR)path);
 	}
 
 	if (udc->recurseIntoSubdirectories && item->GetType() != IT_FILESFOLDER)
@@ -899,7 +899,7 @@ void CDirstatDoc::CallUserDefinedCleanup(bool isDirectory, const CString& format
 
 	CString app= GetCOMSPEC();
 	CString cmdline;
-	cmdline.Format(_T("%s /C %s"), GetBaseNameFromPath(app), userCommandLine);
+	cmdline.Format(_T("%s /C %s"), (LPCTSTR)GetBaseNameFromPath(app), (LPCTSTR)userCommandLine);
 	CString directory= isDirectory ? currentPath : GetFolderNameFromPath(currentPath);
 
 	STARTUPINFO si;
@@ -927,7 +927,7 @@ void CDirstatDoc::CallUserDefinedCleanup(bool isDirectory, const CString& format
 	if (!b)
 	{
 		MdThrowStringExceptionF(IDS_COULDNOTCREATEPROCESSssss,
-			app, cmdline, directory, MdGetWinerrorText(GetLastError())
+			(LPCTSTR)app, (LPCTSTR)cmdline, (LPCTSTR)directory, (LPCTSTR)MdGetWinerrorText(GetLastError())
 		);
 		return;
 	}

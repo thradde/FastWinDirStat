@@ -187,7 +187,7 @@ CString CDirstatView::GenerateReport()
 		if (item->GetType() == IT_MYCOMPUTER)
 			continue;
 
-		report.AppendFormat(_T("%s %s\r\n"), PadWidthBlanks(FormatLongLongHuman(item->GetSize()), 11), item->GetReportPath());
+		report.AppendFormat(_T("%s %s\r\n"), (LPCTSTR)PadWidthBlanks(FormatLongLongHuman(item->GetSize()), 11), (LPCTSTR)item->GetReportPath());
 	}
 
 	report+= _T("\r\n\r\n");
@@ -363,7 +363,7 @@ void CDirstatView::OnUpdate(CView *pSender, LPARAM lHint, CObject *pHint)
 			{
 				if (msg.message == WM_QUIT)
 				{
-					PostQuitMessage(msg.wParam);
+					PostQuitMessage((int)msg.wParam);
 					break;
 				}
 				TranslateMessage(&msg);

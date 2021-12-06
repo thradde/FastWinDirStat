@@ -419,7 +419,7 @@ void COwnerDrawnListControl::DrawItem(LPDRAWITEMSTRUCT pdis)
 
 	CArray<int, int> order;
 	order.SetSize(GetHeaderCtrl()->GetItemCount());
-	GetHeaderCtrl()->GetOrderArray(order.GetData(), order.GetSize());
+	GetHeaderCtrl()->GetOrderArray(order.GetData(), (int)order.GetSize());
 
 	CRect rcFocus= rcItem;
 	rcFocus.DeflateRect(0, LABEL_Y_MARGIN - 1);
@@ -591,7 +591,7 @@ BOOL COwnerDrawnListControl::OnEraseBkgnd(CDC* pDC)
 
 	CArray<int, int> columnOrder;
 	columnOrder.SetSize(GetHeaderCtrl()->GetItemCount());
-	GetColumnOrderArray(columnOrder.GetData(), columnOrder.GetSize());
+	GetColumnOrderArray(columnOrder.GetData(), (int)columnOrder.GetSize());
 
 	CArray<int, int> vertical;
 	vertical.SetSize(GetHeaderCtrl()->GetItemCount());
@@ -600,7 +600,8 @@ BOOL COwnerDrawnListControl::OnEraseBkgnd(CDC* pDC)
 	HDITEM hdi;
 	ZeroMemory(&hdi, sizeof(hdi));
 	hdi.mask= HDI_WIDTH;
-	for (int i=0; i < GetHeaderCtrl()->GetItemCount(); i++)
+	int i;
+	for (i=0; i < GetHeaderCtrl()->GetItemCount(); i++)
 	{
 		GetHeaderCtrl()->GetItem(columnOrder[i], &hdi);
 		x+= hdi.cxy;
@@ -618,7 +619,7 @@ BOOL COwnerDrawnListControl::OnEraseBkgnd(CDC* pDC)
 			pDC->LineTo(rcClient.right, y);
 		}
 
-		for (int i=0; i < vertical.GetSize(); i++)
+		for (i=0; i < vertical.GetSize(); i++)
 		{
 			pDC->MoveTo(vertical[i] - 1, rcClient.top);
 			pDC->LineTo(vertical[i] - 1, rcClient.bottom);
@@ -656,7 +657,7 @@ BOOL COwnerDrawnListControl::OnEraseBkgnd(CDC* pDC)
 		fill.bottom= top + GetRowHeight() - gridWidth;
 		
 		int left= 0;
-		for (int i=0; i < vertical.GetSize(); i++)
+		for (i=0; i < vertical.GetSize(); i++)
 		{
 			fill.left= left;
 			fill.right= vertical[i] - gridWidth;

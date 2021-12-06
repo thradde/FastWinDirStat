@@ -134,7 +134,7 @@ CString CExtensionListControl::CListItem::GetDescription() const
 CString CExtensionListControl::CListItem::GetBytesPercent() const
 {
 	CString s;
-	s.Format(_T("%s%%"), FormatDouble(GetBytesFraction() * 100));
+	s.Format(_T("%s%%"), (LPCTSTR)FormatDouble(GetBytesFraction() * 100));
 	return s;
 }
 
@@ -275,7 +275,8 @@ LONGLONG CExtensionListControl::GetRootSize()
 
 void CExtensionListControl::SelectExtension(LPCTSTR ext)
 {
-	for (int i=0; i < GetItemCount(); i++)
+	int i;
+	for (i=0; i < GetItemCount(); i++)
 	{
 		if (GetListItem(i)->GetExtension().CompareNoCase(ext) == 0)
 			break;

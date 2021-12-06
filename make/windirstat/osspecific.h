@@ -129,10 +129,10 @@ public:
 	static bool IsDllPresent();
 	bool IsSupported();
 
-	ULONG MAPISendMail(LHANDLE lhSession, ULONG ulUIParam, lpMapiMessage lpMessage, FLAGS flFlags, ULONG ulReserved);
+	ULONG MAPISendMail(LHANDLE lhSession, ULONG_PTR ulUIParam, lpMapiMessage lpMessage, FLAGS flFlags, ULONG ulReserved);
  
 private:
-	typedef ULONG (FAR PASCAL *TypeMAPISendMail)(LHANDLE lhSession, ULONG ulUIParam, lpMapiMessage lpMessage, FLAGS flFlags, ULONG ulReserved);
+	typedef ULONG (FAR PASCAL *TypeMAPISendMail)(LHANDLE lhSession, ULONG_PTR ulUIParam, lpMapiMessage lpMessage, FLAGS flFlags, ULONG ulReserved);
  
 	HMODULE m_dll;
 	TypeMAPISendMail m_MAPISendMail;

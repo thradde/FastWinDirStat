@@ -46,7 +46,7 @@ namespace
 
 			CString s;
 			if (n > 0)
-				s.Format(_T("%s%03d"), GetLocaleThousandSeparator(), rest);
+				s.Format(_T("%s%03d"), (LPCTSTR)GetLocaleThousandSeparator(), rest);
 			else
 				s.Format(_T("%d"), rest);
 
@@ -139,15 +139,15 @@ CString FormatLongLongHuman(LONGLONG n)
 	double TB = (int)(n);
 
 	if (TB != 0 || GB == base - 1 && MB >= half)
-		s.Format(_T("%s %s"), FormatDouble(TB + GB/base), GetSpec_TB());
+		s.Format(_T("%s %s"), (LPCTSTR)FormatDouble(TB + GB/base), (LPCTSTR)GetSpec_TB());
 	else if (GB != 0 || MB == base - 1 && KB >= half)
-		s.Format(_T("%s %s"), FormatDouble(GB + MB/base), GetSpec_GB());
+		s.Format(_T("%s %s"), (LPCTSTR)FormatDouble(GB + MB/base), (LPCTSTR)GetSpec_GB());
 	else if (MB != 0 || KB == base - 1 && B >= half)
-		s.Format(_T("%s %s"), FormatDouble(MB + KB/base), GetSpec_MB());
+		s.Format(_T("%s %s"), (LPCTSTR)FormatDouble(MB + KB/base), (LPCTSTR)GetSpec_MB());
 	else if (KB != 0)
-		s.Format(_T("%s %s"), FormatDouble(KB + B/base), GetSpec_KB());
+		s.Format(_T("%s %s"), (LPCTSTR)FormatDouble(KB + B/base), (LPCTSTR)GetSpec_KB());
 	else if (B != 0)
-		s.Format(_T("%d %s"), (int)B, GetSpec_Bytes());
+		s.Format(_T("%d %s"), (int)B, (LPCTSTR)GetSpec_Bytes());
 	else
 		s= _T("0");
 
@@ -170,7 +170,7 @@ CString FormatDouble(double d) // "98,4" or "98.4"
 	int r= (int)(10 * fmod(d, 1));
 
 	CString s;
-    s.Format(_T("%d%s%d"), i, GetLocaleDecimalSeparator(), r);
+    s.Format(_T("%d%s%d"), i, (LPCTSTR)GetLocaleDecimalSeparator(), r);
 
 	return s;
 }
@@ -182,7 +182,8 @@ CString PadWidthBlanks(CString n, int width)
 	{
 		CString b;
 		LPTSTR psz= b.GetBuffer(blankCount + 1);
-		for (int i=0; i < blankCount; i++)
+		int i;
+		for (i=0; i < blankCount; i++)
 			psz[i]= _T(' ');
 		psz[i]= 0;
 		b.ReleaseBuffer();
@@ -286,7 +287,7 @@ CString FormatVolumeNameOfRootPath(CString rootPath)
 CString FormatVolumeName(CString rootPath, CString volumeName)
 {
 	CString ret;
-	ret.Format(_T("%s (%s)"), volumeName, rootPath.Left(2));
+	ret.Format(_T("%s (%s)"), (LPCTSTR)volumeName, (LPCTSTR)rootPath.Left(2));
 	return ret;
 }
 
@@ -347,7 +348,7 @@ void ShellExecuteWithAssocDialog(HWND hwnd, LPCTSTR filename) throw (CException 
 {
 	CWaitCursor wc;
 
-	UINT u= (UINT)ShellExecute(hwnd, NULL, filename, NULL, NULL, SW_SHOWNORMAL);
+	ULONGLONG u = (ULONGLONG)ShellExecute(hwnd, NULL, filename, NULL, NULL, SW_SHOWNORMAL);
 	if (u == SE_ERR_NOASSOC)
 	{
 		// Q192352
@@ -357,12 +358,12 @@ void ShellExecuteWithAssocDialog(HWND hwnd, LPCTSTR filename) throw (CException 
 		sysDir.ReleaseBuffer();
 		
 		CString parameters = _T("shell32.dll,OpenAs_RunDLL ");
-		u= (UINT)ShellExecute(hwnd, _T("open"), _T("RUNDLL32.EXE"), parameters + filename, sysDir, SW_SHOWNORMAL);
+		u = (ULONGLONG)ShellExecute(hwnd, _T("open"), _T("RUNDLL32.EXE"), parameters + filename, sysDir, SW_SHOWNORMAL);
 	}
 		
 	if (u <= 32)
 	{
-		MdThrowStringExceptionF(_T("ShellExecute failed: %1!s!"), GetShellExecuteError(u));
+		MdThrowStringExceptionF(_T("ShellExecute failed: %1!s!"), (LPCTSTR)GetShellExecuteError((UINT)u));
 	}
 }
 
@@ -552,7 +553,7 @@ CString MyQueryDosDevice(LPCTSTR drive)
 
 	if (dw == 0)
 	{
-		TRACE(_T("QueryDosDevice(%s) failed: %s\r\n"), d, MdGetWinerrorText(GetLastError()));
+		TRACE(_T("QueryDosDevice(%s) failed: %s\r\n"), (LPCTSTR)d, (LPCTSTR)MdGetWinerrorText(GetLastError()));
 		return _T("");
 	}
 

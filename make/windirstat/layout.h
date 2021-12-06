@@ -53,12 +53,12 @@ class CLayout
 
 		DECLARE_MESSAGE_MAP()
 		afx_msg void OnPaint();
-		afx_msg UINT OnNcHitTest(CPoint point);
+		afx_msg LRESULT OnNcHitTest(CPoint point);
 	};
 
 public:
 	CLayout(CWnd *dialog, LPCTSTR name);
-	int AddControl(CWnd *control, double movex, double movey, double stretchx, double stretchy);
+	INT_PTR AddControl(CWnd *control, double movex, double movey, double stretchx, double stretchy);
 	void AddControl(UINT id, double movex, double movey, double stretchx, double stretchy);
 
 	void OnInitDialog(bool centerWindow);

@@ -89,7 +89,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnDestroy();
 	afx_msg UINT OnGetDlgCode();
-	afx_msg UINT OnNcHitTest(CPoint point);
+	afx_msg LRESULT OnNcHitTest(CPoint point);
 	afx_msg void OnSetFocus(CWnd* pOldWnd);
 	afx_msg void OnKillFocus(CWnd* pNewWnd);
 	afx_msg void OnPaint();
@@ -97,7 +97,7 @@ protected:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
-	afx_msg void OnTimer(UINT nIDEvent);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg LRESULT OnSetPos(WPARAM, LPARAM lparam);
 	afx_msg LRESULT OnGetPos(WPARAM, LPARAM lparam);
 };

@@ -136,10 +136,10 @@ void CAboutDlg::CMyTabControl::SetPageText(int tab)
 	switch (tab)
 	{
 	case TAB_ABOUT:
-		text.FormatMessage(IDS_ABOUT_ABOUTTEXTss, GetAuthorEmail(), GetWinDirStatHomepage());
+		text.FormatMessage(IDS_ABOUT_ABOUTTEXTss, (LPCTSTR)GetAuthorEmail(), (LPCTSTR)GetWinDirStatHomepage());
 		break;
 	case TAB_AUTHORS:
-		text.FormatMessage(IDS_ABOUT_AUTHORSTEXTs, GetAuthorEmail());
+		text.FormatMessage(IDS_ABOUT_AUTHORSTEXTs, (LPCTSTR)GetAuthorEmail());
 		translators.LoadString(IDS_TRANSLATORS);
 		text += translators;
 		// Anti-spam: avoid e-mail addresses in source-code:
@@ -248,7 +248,7 @@ CString CAboutDlg::GetAppVersion()
 	USES_CONVERSION;
 
 	CString s;
-	s.Format(_T("WinDirStat %s"), A2T(VN_STRING_EXE));
+	s.Format(_T("Fast WinDirStat %s"), A2T(VN_STRING_EXE));
 	return s;
 }
 

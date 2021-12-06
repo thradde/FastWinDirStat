@@ -42,7 +42,7 @@ CLayout::CLayout(CWnd *dialog, LPCTSTR name)
 	m_originalDialogSize.cy= 0;
 }
 
-int CLayout::AddControl(CWnd *control, double movex, double movey, double stretchx, double stretchy)
+INT_PTR CLayout::AddControl(CWnd *control, double movex, double movey, double stretchx, double stretchy)
 {
 	SControlInfo info;
 	
@@ -68,7 +68,8 @@ void CLayout::OnInitDialog(bool centerWindow)
 	m_dialog->GetWindowRect(rcDialog);
 	m_originalDialogSize= rcDialog.Size();
 
-	for (int i=0; i < m_control.GetSize(); i++)
+	INT_PTR i;
+	for (i=0; i < m_control.GetSize(); i++)
 	{
 		CRect rc;
 		m_control[i].control->GetWindowRect(rc);
@@ -109,11 +110,11 @@ void CLayout::OnSize()
 	// The DeferWindowPos-stuff prevents the controls
 	// from overwriting each other.
 
-	HDWP hdwp= BeginDeferWindowPos(m_control.GetSize());
+	HDWP hdwp = BeginDeferWindowPos((int)m_control.GetSize());
 
 	for (int i=0; i < m_control.GetSize(); i++)
 	{
-		CRect rc= m_control[i].originalRectangle;
+		rc= m_control[i].originalRectangle;
 
 		CSize move(int(diff.cx * m_control[i].movex), int(diff.cy * m_control[i].movey));
 		CRect stretch(0, 0, int(diff.cx * m_control[i].stretchx), int(diff.cy * m_control[i].stretchy));
@@ -226,7 +227,7 @@ void CLayout::CSizeGripper::DrawShadowLine(CDC *pdc, CPoint start, CPoint end)
 	}
 }
 
-UINT CLayout::CSizeGripper::OnNcHitTest(CPoint point)
+LRESULT CLayout::CSizeGripper::OnNcHitTest(CPoint point)
 {
 	ScreenToClient(&point);
 

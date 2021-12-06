@@ -23,6 +23,9 @@
 
 #include "stdafx.h"
 #include "osspecific.h"
+#include "stdint.h"
+#include "..\..\..\CognosNT\CognosAPI\CognosAPI.h"
+#include "CogFileFind.h"
 
 #include "mountpoints.h"
 
@@ -83,7 +86,7 @@ void CMountPoints::GetDriveVolumes()
 
 			if (!b)
 			{
-				TRACE(_T("GetVolumeNameForVolumeMountPoint(%s) failed.\n"), s);
+				TRACE(_T("GetVolumeNameForVolumeMountPoint(%s) failed.\n"), (LPCTSTR)s);
 				volume.Empty();
 			}
 		}
@@ -143,12 +146,12 @@ void CMountPoints::GetAllMountPoints()
 			uniquePath+= point;
 			CString mountedVolume;
 
-			BOOL b= m_va.GetVolumeNameForVolumeMountPoint(uniquePath, mountedVolume.GetBuffer(_MAX_PATH), _MAX_PATH);
+			b= m_va.GetVolumeNameForVolumeMountPoint(uniquePath, mountedVolume.GetBuffer(_MAX_PATH), _MAX_PATH);
 			mountedVolume.ReleaseBuffer();
 
 			if (!b)
 			{
-				TRACE(_T("GetVolumeNameForVolumeMountPoint(%s) failed.\r\n"), uniquePath);
+				TRACE(_T("GetVolumeNameForVolumeMountPoint(%s) failed.\r\n"), (LPCTSTR)uniquePath);
 				continue;
 			}
 
@@ -171,9 +174,9 @@ void CMountPoints::GetAllMountPoints()
 	POSITION pos= m_volume.GetStartPosition();
 	while (pos != NULL)
 	{
-		CString volume;
+		CString svolume;
 		PointVolumeArray *pva= NULL;
-		m_volume.GetNextAssoc(pos, volume, pva);
+		m_volume.GetNextAssoc(pos, svolume, pva);
 		pva->AssertValid();
 	}
 #endif
@@ -221,6 +224,15 @@ bool CMountPoints::IsJunctionPoint(CString path)
 	return ((attr & FILE_ATTRIBUTE_REPARSE_POINT) != 0);
 }
 
+// Fast version, since this is called for each AddDirectory().
+bool CMountPoints::IsJunctionPoint(const CCogFileFind &finder)
+{
+	if (IsMountPoint(finder.GetFilePath()))
+		return false;
+
+	return finder.IsReparsePoint();
+}
+
 bool CMountPoints::IsVolumeMountPoint(CString volume, CString path)
 {
 	for (;;)
@@ -228,12 +240,13 @@ bool CMountPoints::IsVolumeMountPoint(CString volume, CString path)
 		PointVolumeArray *pva;
 		if (!m_volume.Lookup(volume, pva))
 		{
-			TRACE(_T("CMountPoints: Volume(%s) unknown!\r\n"), volume);	
+			TRACE(_T("CMountPoints: Volume(%s) unknown!\r\n"), (LPCTSTR)volume);
 			return false;
 		}
 
 		CString point;
-		for (int i=0; i < pva->GetSize(); i++)
+		int i;
+		for (i=0; i < pva->GetSize(); i++)
 		{
 			point= (*pva)[i].point;
 			if (path.Left(point.GetLength()) == point)

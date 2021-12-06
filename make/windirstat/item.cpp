@@ -159,18 +159,18 @@ CString CItem::GetText(int subitem) const
 			if (m_readJobs == 1)
 				s.LoadString(IDS_ONEREADJOB);
 			else
-				s.FormatMessage(IDS_sREADJOBS, FormatCount(m_readJobs));
+				s.FormatMessage(IDS_sREADJOBS, (LPCTSTR)FormatCount(m_readJobs));
 		}
 		break;
 
 	case COL_PERCENTAGE:
 		if (GetOptions()->IsShowTimeSpent() && MustShowReadJobs() || IsRootItem())
 		{
-			s.Format(_T("[%s s]"), FormatMilliseconds(GetTicksWorked()));
+			s.Format(_T("[%s s]"), (LPCTSTR)FormatMilliseconds(GetTicksWorked()));
 		}
 		else
 		{
-			s.Format(_T("%s%%"), FormatDouble(GetFraction() * 100));
+			s.Format(_T("%s%%"), (LPCTSTR)FormatDouble(GetFraction() * 100));
 		}
 		break;
 
@@ -307,7 +307,7 @@ int CItem::CompareSibling(const CTreeListItem *tlib, int subitem) const
 	return r;
 }
 
-int CItem::GetChildrenCount() const
+INT_PTR CItem::GetChildrenCount() const
 {
 	return m_children.GetSize();
 }
@@ -347,8 +347,7 @@ int CItem::GetImageToCache() const
 		{
 			image = GetMyImageList()->GetMountPointImage();
 		}
-		else
-		if (GetType() == IT_DIRECTORY && GetApp()->IsJunctionPoint(path))
+		else if (GetType() == IT_DIRECTORY && GetApp()->IsJunctionPoint(path))
 		{
 			image = GetMyImageList()->GetJunctionImage();
 		}
@@ -466,7 +465,7 @@ void CItem::UpdateLastChange()
 		int i = path.ReverseFind(_T('\\'));
 		CString basename = path.Mid(i + 1);
 		CString pattern;
-		pattern.Format(_T("%s\\..\\%s"), path, basename);
+		pattern.Format(_T("%s\\..\\%s"), (LPCTSTR)path, (LPCTSTR)basename);
 		CFileFindWDS finder;
 		BOOL b = finder.FindFile(pattern);
 		if (!b)
@@ -477,7 +476,7 @@ void CItem::UpdateLastChange()
 	}
 }
 
-CItem *CItem::GetChild(int i) const
+CItem *CItem::GetChild(INT_PTR i) const
 {
 	return m_children[i];
 }
@@ -875,7 +874,7 @@ void CItem::SetDone()
 			// For CDs, the GetDiskFreeSpaceEx()-function is not correct.
 			if (unknownspace < 0)
 			{
-				TRACE(_T("GetDiskFreeSpace(%s) incorrect.\n"), GetPath());
+				TRACE(_T("GetDiskFreeSpace(%s) incorrect.\n"), (LPCTSTR)GetPath());
 				unknownspace = 0;
 			}
 			unknown->SetSize(unknownspace);
@@ -926,7 +925,7 @@ void CItem::DoSomeWork(DWORD ticks)
 			CList<FILEINFO, FILEINFO> files;
 
 
-			CFileFindWDS finder;
+			CCogFileFind finder;
 			BOOL b = finder.FindFile(GetFindPattern());
 			while (b)
 			{
@@ -1045,7 +1044,7 @@ void CItem::DoSomeWork(DWORD ticks)
 }
 
 // Return: false if deleted
-bool CItem::StartRefresh() 
+bool CItem::StartRefresh()
 {
 	ASSERT(GetType() != IT_FREESPACE);
 	ASSERT(GetType() != IT_UNKNOWN);
@@ -1062,6 +1061,7 @@ bool CItem::StartRefresh()
 
 		return true;
 	}
+
 	ASSERT(GetType() == IT_FILE || GetType() == IT_DRIVE || GetType() == IT_DIRECTORY || GetType() == IT_FILESFOLDER);
 
 	bool wasExpanded = IsVisible() && IsExpanded();
@@ -1195,6 +1195,7 @@ bool CItem::StartRefresh()
 			CreateUnknownItem();
 	}
 
+	CogWdsCloseDrive(GetPath());
 	DoSomeWork(0);
 
 	if (wasExpanded)
@@ -1210,7 +1211,8 @@ void CItem::UpwardSetUndone()
 {
 	if (GetType() == IT_DRIVE && IsDone() && GetDocument()->OptionShowUnknown())
 	{
-		for (int i=0; i < GetChildrenCount(); i++)
+		int i;
+		for (i=0; i < GetChildrenCount(); i++)
 			if (GetChild(i)->GetType() == IT_UNKNOWN)
 				break;
 		CItem *unknown = GetChild(i);
@@ -1235,7 +1237,7 @@ void CItem::RefreshRecycler()
 	system.ReleaseBuffer();
 	if (!b)
 	{
-		TRACE(_T("GetVolumeInformation(%s) failed.\n"), GetPath());
+		TRACE(_T("GetVolumeInformation(%s) failed.\n"), (LPCTSTR)GetPath());
 		return; // nix zu machen
 	}
 
@@ -1250,18 +1252,19 @@ void CItem::RefreshRecycler()
 	}
 	else
 	{
-		TRACE(_T("%s: unknown file system type %s\n"), GetPath(), system);
+		TRACE(_T("%s: unknown file system type %s\n"), (LPCTSTR)GetPath(), (LPCTSTR)system);
 		return; // nix zu machen.
 	}
 
-	for (int i=0; i < GetChildrenCount(); i++)
+	int i;
+	for (i=0; i < GetChildrenCount(); i++)
 	{
 		if (GetChild(i)->GetName().CompareNoCase(recycler) == 0)
 			break;
 	}
 	if (i >= GetChildrenCount())
 	{
-		TRACE(_T("%s: Recycler(%s) not found.\n"), GetPath(), recycler);
+		TRACE(_T("%s: Recycler(%s) not found.\n"), (LPCTSTR)GetPath(), (LPCTSTR)recycler);
 		return; // nicht gefunden
 	}
 
@@ -1538,7 +1541,8 @@ COLORREF CItem::GetPercentageColor() const
 
 int CItem::FindFreeSpaceItemIndex() const
 {
-	for (int i=0; i < GetChildrenCount(); i++)
+	int i;
+	for (i=0; i < GetChildrenCount(); i++)
 	{
 		if (GetChild(i)->GetType() == IT_FREESPACE)
 			break;
@@ -1548,7 +1552,8 @@ int CItem::FindFreeSpaceItemIndex() const
 
 int CItem::FindUnknownItemIndex() const
 {
-	for (int i=0; i < GetChildrenCount(); i++)
+	int i;
+	for (i=0; i < GetChildrenCount(); i++)
 	{
 		if (GetChild(i)->GetType() == IT_UNKNOWN)
 			break;
@@ -1597,11 +1602,11 @@ CString CItem::UpwardGetPathWithoutBackslash() const
 	return path; 
 }
 
-void CItem::AddDirectory(CFileFindWDS& finder)
+void CItem::AddDirectory(CCogFileFind& finder)
 {
 	bool dontFollow = GetApp()->IsMountPoint(finder.GetFilePath()) && !GetOptions()->IsFollowMountPoints();
 
-	dontFollow |= GetApp()->IsJunctionPoint(finder.GetFilePath()) && !GetOptions()->IsFollowJunctionPoints();
+	dontFollow |= GetApp()->IsJunctionPoint(finder) && !GetOptions()->IsFollowJunctionPoints();
 
 	CItem *child = new CItem(IT_DIRECTORY, finder.GetFileName(), dontFollow);
 	FILETIME t;

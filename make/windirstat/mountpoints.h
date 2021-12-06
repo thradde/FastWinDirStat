@@ -39,6 +39,7 @@ public:
 	void Initialize();
 	bool IsMountPoint(CString path);
 	bool IsJunctionPoint(CString path);
+	bool IsJunctionPoint(const CCogFileFind &finder);	// fast version
 
 private:
 	void Clear();

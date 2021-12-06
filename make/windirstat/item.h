@@ -125,7 +125,7 @@ public:
 	virtual CString GetText(int subitem) const;
 	virtual COLORREF GetItemTextColor() const;
 	virtual int CompareSibling(const CTreeListItem *tlib, int subitem) const;
-	virtual int GetChildrenCount() const;
+	virtual INT_PTR GetChildrenCount() const;
 	virtual CTreeListItem *GetTreeListChild(int i) const;
 	virtual int GetImageToCache() const;
 	virtual void DrawAdditionalState(CDC *pdc, const CRect& rcLabel) const;
@@ -135,8 +135,8 @@ public:
 	virtual		      CRect TmiGetRectangle()          const;
 	virtual            void TmiSetRectangle(const CRect& rc);
 	virtual        COLORREF TmiGetGraphColor()         const { return GetGraphColor(); }
-	virtual             int TmiGetChildrenCount()      const { return GetChildrenCount(); }
-	virtual CTreemap::Item *TmiGetChild(int c)         const { return GetChild(c); }
+	virtual         INT_PTR TmiGetChildrenCount()      const { return GetChildrenCount(); }
+	virtual CTreemap::Item *TmiGetChild(INT_PTR c)     const { return GetChild(c); }
 	virtual        LONGLONG TmiGetSize()               const { return GetSize(); }
 
 	// CItem
@@ -148,7 +148,7 @@ public:
 	LONGLONG GetProgressPos() const;
 	const CItem *UpwardGetRoot() const;
 	void UpdateLastChange();
-	CItem *GetChild(int i) const;
+	CItem *GetChild(INT_PTR i) const;
 	CItem *GetParent() const;
 	int FindChildIndex(const CItem *child) const;
 	void AddChild(CItem *child);
@@ -213,7 +213,7 @@ private:
 	int FindFreeSpaceItemIndex() const;
 	int FindUnknownItemIndex() const;
 	CString UpwardGetPathWithoutBackslash() const;
-	void AddDirectory(CFileFindWDS& finder);
+	void AddDirectory(CCogFileFind& finder);
 	void AddFile(const FILEINFO& fi);
 	void DriveVisualUpdateDuringWork();
 	void UpwardDrivePacman();

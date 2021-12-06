@@ -35,6 +35,9 @@
 #define new DEBUG_NEW
 #endif
 
+#pragma comment(linker,	"\"/manifestdependency:type='win32' \
+						name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
+						processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
 CMainFrame *GetMainFrame()
 {
@@ -55,7 +58,7 @@ CString GetAuthorEmail()
 
 CString GetWinDirStatHomepage()
 {
-	return _T("windirstat.sourceforge.net");
+	return _T("idealsoftware.com/opensource/windirstat.html");
 }
 
 CString GetFeedbackEmail()
@@ -177,7 +180,7 @@ void CDirstatApp::RestartApplication()
 	if (!success)
 	{
 		CString s;
-		s.FormatMessage(IDS_CREATEPROCESSsFAILEDs, GetAppFileName(), MdGetWinerrorText(GetLastError()));
+		s.FormatMessage(IDS_CREATEPROCESSsFAILEDs, (LPCTSTR)GetAppFileName(), (LPCTSTR)MdGetWinerrorText(GetLastError()));
 		AfxMessageBox(s);
 		return;
 	}
@@ -252,7 +255,7 @@ CString CDirstatApp::FindAuxiliaryFileByLangid(LPCTSTR prefix, LPCTSTR suffix, L
 	number.Format(_T("%04x"), langid);
 
 	CString exactName;
-	exactName.Format(_T("%s%s%s"), prefix, number, suffix);
+	exactName.Format(_T("%s%s%s"), prefix, (LPCTSTR)number, suffix);
 
 	CString exactPath= GetAppFolder() + _T("\\") + exactName;
 	if (FileExists(exactPath) && (!checkResource || IsCorrectResourceDll(exactPath)))
@@ -324,6 +327,11 @@ bool CDirstatApp::IsJunctionPoint(CString path)
 	return m_mountPoints.IsJunctionPoint(path);
 }
 
+bool CDirstatApp::IsJunctionPoint(const CCogFileFind &finder)
+{
+	return m_mountPoints.IsJunctionPoint(finder);
+}
+
 // Get the alternative colors for compressed and encrypted files/folders.
 // This function uses either the value defined in the Explorer configuration
 // or the default color values.
@@ -370,7 +378,7 @@ CString CDirstatApp::GetCurrentProcessMemoryInfo()
 	CString n= PadWidthBlanks(FormatBytes(m_workingSet), 11);
 
 	CString s;
-	s.FormatMessage(IDS_RAMUSAGEs, n);
+	s.FormatMessage(IDS_RAMUSAGEs, (LPCTSTR)n);
 
 	return s;
 }
@@ -410,7 +418,18 @@ LANGID CDirstatApp::GetBuiltInLanguage()
 
 BOOL CDirstatApp::InitInstance()
 {
+	// Create a mutex with a unique name, so Inno Setup can terminate the program before update / reinstall / uninstall
+	CreateMutex(NULL, FALSE, _T("IS$$Mutex$$FastWindirStat"));
+
 	CWinApp::InitInstance();
+
+	// The license key provided here to CogConnect() is exclusively granted to the WinDirStat project by
+	// IDEAL Software GmbH. If you wish to use CognosNT in another non-commercial software, or if you want
+	// to use CognosNT in commercial software, contact support@idealsoftware.com
+	if (!LoadCogonosDll())
+		MessageBox(NULL, _T("cognosapi.dll could not be loaded.\n\nFast drive scanning is disabled."), _T("Error:"), MB_ICONERROR | MB_OK);
+	else if (!fpCogConnect(L"COG-S1100-2137-KNDT-QHLX"))
+		MessageBox(NULL, _T("Fast drive scanning is disabled."), _T("Error:"), MB_ICONERROR | MB_OK);
 
 	InitCommonControls();			// InitCommonControls() is necessary for Windows XP.
 	VERIFY(AfxOleInit());			// For SHBrowseForFolder()
@@ -440,7 +459,7 @@ BOOL CDirstatApp::InitInstance()
 			}
 			else
 			{
-				TRACE(_T("LoadLibrary(%s) failed: %u\r\n"), resourceDllPath, GetLastError());
+				TRACE(_T("LoadLibrary(%s) failed: %u\r\n"), (LPCTSTR)resourceDllPath, GetLastError());
 			}
 		}
 		// else: We use our built-in English resources.
@@ -487,6 +506,13 @@ BOOL CDirstatApp::InitInstance()
 
 int CDirstatApp::ExitInstance()
 {
+	if (ghCognosDll)
+	{
+		CogWdsCloseAllDrives();
+		fpCogDisconnect();
+		FreeCogonosDll();
+	}
+
 	return CWinApp::ExitInstance();
 }
 

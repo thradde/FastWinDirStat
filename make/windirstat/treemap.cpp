@@ -104,14 +104,14 @@ void CColorSpace::DistributeFirst(int& first, int& second, int& third)
 
 	if (second > 255)
 	{
-		int h= second - 255;
+		h= second - 255;
 		second= 255;
 		third+= h;
 		ASSERT(third <= 255);
 	}
 	else if (third > 255)
 	{
-		int h= third - 255;
+		h= third - 255;
 		third= 255;
 		second+= h;
 		ASSERT(second <= 255);
@@ -387,7 +387,7 @@ CTreemap::Item *CTreemap::FindItemByPoint(Item *item, CPoint point)
 		ASSERT(item->TmiGetSize() > 0);
 		ASSERT(item->TmiGetChildrenCount() > 0);
 
-		for (int i=0; i < item->TmiGetChildrenCount(); i++)
+		for (INT_PTR i=0; i < item->TmiGetChildrenCount(); i++)
 		{
 			Item *child= item->TmiGetChild(i);
 
@@ -656,8 +656,8 @@ bool CTreemap::KDirStat_ArrangeChildren(
 	if (parent->TmiGetSize() == 0)
 	{
 		rows.Add(1.0);
-		childrenPerRow.Add(parent->TmiGetChildrenCount());
-		for (int i=0; i < parent->TmiGetChildrenCount(); i++)
+		childrenPerRow.Add((int)parent->TmiGetChildrenCount());
+		for (INT_PTR i=0; i < parent->TmiGetChildrenCount(); i++)
 			childWidth[i]= 1.0 / parent->TmiGetChildrenCount();
 		return true;
 	}
@@ -676,19 +676,19 @@ bool CTreemap::KDirStat_ArrangeChildren(
 			width= (double)parent->TmiGetRectangle().Height() / parent->TmiGetRectangle().Width();
 	}
 
-	int nextChild= 0;
+	INT_PTR nextChild= 0;
 	while (nextChild < parent->TmiGetChildrenCount())
 	{
-		int childrenUsed;
+		INT_PTR childrenUsed;
 		rows.Add(KDirStat_CalcutateNextRow(parent, nextChild, width, childrenUsed, childWidth));
-		childrenPerRow.Add(childrenUsed);
+		childrenPerRow.Add((int)childrenUsed);
 		nextChild+= childrenUsed;
 	}
 
 	return horizontalRows;
 }
 
-double CTreemap::KDirStat_CalcutateNextRow(Item *parent, const int nextChild, double width, int& childrenUsed, CArray<double, double>& childWidth)
+double CTreemap::KDirStat_CalcutateNextRow(Item *parent, const INT_PTR nextChild, double width, INT_PTR& childrenUsed, CArray<double, double>& arChildWidth)
 {
 	static const double _minProportion = 0.4;
 	ASSERT(_minProportion < 1);
@@ -701,7 +701,8 @@ double CTreemap::KDirStat_CalcutateNextRow(Item *parent, const int nextChild, do
 	LONGLONG sizeUsed= 0;
 	double rowHeight= 0;
 
-	for (int i=nextChild; i < parent->TmiGetChildrenCount(); i++)
+	INT_PTR i;
+	for (i=nextChild; i < parent->TmiGetChildrenCount(); i++)
 	{
 		LONGLONG childSize= parent->TmiGetChild(i)->TmiGetSize();
 		if (childSize == 0)
@@ -754,7 +755,7 @@ double CTreemap::KDirStat_CalcutateNextRow(Item *parent, const int nextChild, do
 		double childSize= (double)parent->TmiGetChild(nextChild + i)->TmiGetSize();
 		double cw= childSize / rowSize;
 		ASSERT(cw >= 0);
-		childWidth[nextChild + i]= cw;
+		arChildWidth[nextChild + i]= cw;
 	}
 
 	return rowHeight;
@@ -779,7 +780,7 @@ void CTreemap::SequoiaView_DrawChildren(CDC *pdc, Item *parent, const double *su
 	const double sizePerSquarePixel= (double)parent->TmiGetSize() / remaining.Width() / remaining.Height();
 
 	// First child for next row
-	int head = 0;
+	INT_PTR head = 0;
 
 	// At least one child left
 	while (head < parent->TmiGetChildrenCount())
@@ -798,8 +799,8 @@ void CTreemap::SequoiaView_DrawChildren(CDC *pdc, Item *parent, const double *su
 		ASSERT(hh > 0);
 
 		// Row will be made up of child(rowBegin)...child(rowEnd - 1)
-		int rowBegin = head;
-		int rowEnd = head;
+		INT_PTR rowBegin = head;
+		INT_PTR rowEnd = head;
 
 		// Worst ratio so far
 		double worst = DBL_MAX;
@@ -884,7 +885,7 @@ void CTreemap::SequoiaView_DrawChildren(CDC *pdc, Item *parent, const double *su
 		}
 
 		// Now put the children into their places
-		for (int i=rowBegin; i < rowEnd; i++)
+		for (INT_PTR i=rowBegin; i < rowEnd; i++)
 		{
 			int begin= (int)fBegin;
 			double fraction= (double)(parent->TmiGetChild(i)->TmiGetSize()) / sum;

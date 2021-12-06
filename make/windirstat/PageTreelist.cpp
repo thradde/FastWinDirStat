@@ -110,7 +110,8 @@ void CPageTreelist::OnColorChanged(UINT, NMHDR *, LRESULT *)
 
 void CPageTreelist::EnableButtons()
 {
-	for (int i=0; i < m_treelistColorCount; i++)
+	int i;
+	for (i=0; i < m_treelistColorCount; i++)
 		m_colorButton[i].EnableWindow(true);
 	for (; i < TREELISTCOLORCOUNT; i++)
 		m_colorButton[i].EnableWindow(false);

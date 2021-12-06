@@ -500,7 +500,7 @@ void CMainFrame::UpdateProgress()
 		{
 			int pos= (int)((double) m_progressPos * 100 / m_progressRange);
 			m_progress.SetPos(pos);
-			titlePrefix.Format(_T("%d%% %s"), pos, suspended);
+			titlePrefix.Format(_T("%d%% %s"), pos, (LPCTSTR)suspended);
 		}
 		else
 		{
@@ -837,10 +837,11 @@ void CMainFrame::UpdateCleanupMenu(CMenu *menu)
 		MyQueryRecycleBin(rb, items, bytes);
 		
 		CString info;
+		CString str = GetOptions()->IsHumanFormat() && bytes != 0 ? _T("") : _T(" ") + GetSpec_Bytes();
 		if (items == 1)
-			info.FormatMessage(IDS__ONEITEMss, FormatBytes(bytes), GetOptions()->IsHumanFormat() && bytes != 0 ? _T("") : _T(" ") + GetSpec_Bytes());
+			info.FormatMessage(IDS__ONEITEMss, (LPCTSTR)FormatBytes(bytes), (LPCTSTR)str);
 		else
-			info.FormatMessage(IDS__sITEMSss, FormatCount(items), FormatBytes(bytes), GetOptions()->IsHumanFormat() && bytes != 0 ? _T("") : _T(" ") + GetSpec_Bytes());
+			info.FormatMessage(IDS__sITEMSss, (LPCTSTR)FormatCount(items), (LPCTSTR)FormatBytes(bytes), (LPCTSTR)str);
 
 		s+= info;
 		VERIFY(menu->ModifyMenu(ID_CLEANUP_EMPTYRECYCLEBIN, MF_BYCOMMAND|MF_STRING, ID_CLEANUP_EMPTYRECYCLEBIN, s));
@@ -911,7 +912,7 @@ void CMainFrame::AppendUserDefinedCleanups(CMenu *menu)
 		for (int i=0; i < indices.GetSize(); i++)
 		{
 			CString string;
-			string.FormatMessage(IDS_UDCsCTRLd, GetOptions()->GetUserDefinedCleanup(indices[i])->title, indices[i]);
+			string.FormatMessage(IDS_UDCsCTRLd, (LPCTSTR)GetOptions()->GetUserDefinedCleanup(indices[i])->title, indices[i]);
 
 			UINT flags= MF_GRAYED | MF_DISABLED;
 			if (

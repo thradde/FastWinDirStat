@@ -222,7 +222,7 @@ bool CMapi32Api::IsSupported()
 	return true;
 }
 
-ULONG CMapi32Api::MAPISendMail(LHANDLE lhSession, ULONG ulUIParam, lpMapiMessage lpMessage, FLAGS flFlags, ULONG ulReserved)
+ULONG CMapi32Api::MAPISendMail(LHANDLE lhSession, ULONG_PTR ulUIParam, lpMapiMessage lpMessage, FLAGS flFlags, ULONG ulReserved)
 {
 	ASSERT(IsSupported());
 	return (*m_MAPISendMail)(lhSession, ulUIParam, lpMessage, flFlags, ulReserved);

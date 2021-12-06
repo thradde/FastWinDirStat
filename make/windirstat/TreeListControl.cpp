@@ -390,7 +390,8 @@ void CTreeListControl::SelectAndShowItem(const CTreeListItem *item, bool showWho
 	}
 
 	int parent= 0;
-	for (int i=path.GetSize() - 1; i >= 0; i--)
+	INT_PTR i;
+	for (i=path.GetSize() - 1; i >= 0; i--)
 	{
 		int index= FindTreeItem(path[i]);
 		if (index == -1)
@@ -410,16 +411,16 @@ void CTreeListControl::SelectAndShowItem(const CTreeListItem *item, bool showWho
 		parent= index;
 	}
 
-	i= FindTreeItem(path[0]); 
+	int j = FindTreeItem(path[0]); 
 	
-	int w= GetSubItemWidth(GetItem(i), 0) + 5;
+	int w= GetSubItemWidth(GetItem(j), 0) + 5;
 	if (GetColumnWidth(0) < w)
 		SetColumnWidth(0, w);
 
 	if (showWholePath)
 		EnsureVisible(0, false);
 
-	SelectItem(i);
+	SelectItem(j);
 }
 
 void CTreeListControl::OnItemDoubleClick(int i)

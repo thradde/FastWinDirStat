@@ -115,7 +115,7 @@ void CModalSendMail::DoOperation()
 		mrd.lpszName= T2A((LPTSTR)(LPCTSTR)m_recipient);
 	}
 
-	UINT r= m_api.MAPISendMail(0, (ULONG)AfxGetMainWnd()->m_hWnd, &message, MAPI_LOGON_UI|MAPI_DIALOG, 0);
+	UINT r= m_api.MAPISendMail(0, (ULONG_PTR)AfxGetMainWnd()->m_hWnd, &message, MAPI_LOGON_UI|MAPI_DIALOG, 0);
 	// This call ASSERTs in winocc.cpp, line 207, if, for example, an invalid recipient is entered,
 	// and (in my case) Outlook Express displays a dialog.
 	// The assertion can safely be ignored.

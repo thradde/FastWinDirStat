@@ -94,11 +94,12 @@ void CSortingListControl::LoadPersistentAttributes()
 	CArray<int, int> arr;
 	arr.SetSize(GetHeaderCtrl()->GetItemCount());
 
-	GetColumnOrderArray(arr.GetData(), arr.GetSize());	
+	GetColumnOrderArray(arr.GetData(), (int)arr.GetSize());	
 	CPersistence::GetColumnOrder(m_name, arr);
-	SetColumnOrderArray(arr.GetSize(), arr.GetData());
+	SetColumnOrderArray((int)arr.GetSize(), arr.GetData());
 
-	for (int i=0; i < arr.GetSize(); i++)
+	int i;
+	for (i=0; i < arr.GetSize(); i++)
 		arr[i]= GetColumnWidth(i);
 	CPersistence::GetColumnWidths(m_name, arr);
 	for (i=0; i < arr.GetSize(); i++)
@@ -120,7 +121,7 @@ void CSortingListControl::SavePersistentAttributes()
 	CArray<int, int> arr;
 	arr.SetSize(GetHeaderCtrl()->GetItemCount());
 
-	GetColumnOrderArray(arr.GetData(), arr.GetSize());	
+	GetColumnOrderArray(arr.GetData(), (int)arr.GetSize());
 	CPersistence::SetColumnOrder(m_name, arr);
 
 	for (int i=0; i < arr.GetSize(); i++)

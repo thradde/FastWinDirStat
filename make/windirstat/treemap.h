@@ -78,8 +78,8 @@ public:
 		virtual        CRect TmiGetRectangle()          const = 0;
 		virtual         void TmiSetRectangle(const CRect& rc) = 0;
 		virtual     COLORREF TmiGetGraphColor()         const = 0;
-		virtual          int TmiGetChildrenCount()      const = 0;
-		virtual        Item *TmiGetChild(int c)         const = 0;
+		virtual      INT_PTR TmiGetChildrenCount()      const = 0;
+		virtual        Item *TmiGetChild(INT_PTR c)     const = 0;
 		virtual     LONGLONG TmiGetSize()               const = 0;
 	};
 
@@ -204,7 +204,7 @@ protected:
 	// KDirStat-like squarification
 	void KDirStat_DrawChildren(CDC *pdc, Item *parent, const double *surface, double h, DWORD flags);
 	bool KDirStat_ArrangeChildren(Item *parent,	CArray<double, double>& childWidth,	CArray<double, double>& rows, CArray<int, int>& childrenPerRow);
-	double KDirStat_CalcutateNextRow(Item *parent, const int nextChild, double width, int& childrenUsed, CArray<double, double>& childWidth);
+	double KDirStat_CalcutateNextRow(Item *parent, const INT_PTR nextChild, double width, INT_PTR& childrenUsed, CArray<double, double>& childWidth);
 
 	// Classical SequoiaView-like squarification
 	void SequoiaView_DrawChildren(CDC *pdc, Item *parent, const double *surface, double h, DWORD flags);
@@ -290,8 +290,8 @@ class CTreemapPreview: public CStatic
 		virtual        CRect TmiGetRectangle()          const	{ return m_rect; }
 		virtual         void TmiSetRectangle(const CRect& rc)	{ m_rect = rc; }
 		virtual     COLORREF TmiGetGraphColor()         const	{ return m_color; }
-		virtual          int TmiGetChildrenCount()      const	{ return (int)m_children.GetSize(); }
-		virtual        Item *TmiGetChild(int c)         const	{ return m_children[c]; }
+		virtual      INT_PTR TmiGetChildrenCount()      const	{ return m_children.GetSize(); }
+		virtual        Item *TmiGetChild(INT_PTR c)     const	{ return m_children[c]; }
 		virtual     LONGLONG TmiGetSize()               const	{ return m_size; }
 
 	private:

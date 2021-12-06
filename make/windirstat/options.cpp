@@ -815,7 +815,7 @@ CString COptions::GetReportSuffix()
 CString COptions::GetReportDefaultSuffix()
 {
 	CString suffix= LoadString(IDS_DISKUSAGEREPORTGENERATEDBYWINDIRSTAT);
-	suffix.AppendFormat(_T("http://%s/\r\n"), GetWinDirStatHomepage());
+	suffix.AppendFormat(_T("http://%s/\r\n"), (LPCTSTR)GetWinDirStatHomepage());
 	return suffix;
 }
 
@@ -833,7 +833,8 @@ void COptions::SaveToRegistry()
 	SetProfileBool(sectionOptions, entryListFullRowSelection, m_listFullRowSelection);
 
 	SetProfileInt(sectionOptions, entryTreelistColorCount, m_treelistColorCount);
-	for (int i=0; i < TREELISTCOLORCOUNT; i++)
+	int i;
+	for (i=0; i < TREELISTCOLORCOUNT; i++)
 	{
 		CString entry;
 		entry.Format(entryTreelistColorN, i);
@@ -891,7 +892,8 @@ void COptions::LoadFromRegistry()
 
 	m_treelistColorCount= GetProfileInt(sectionOptions, entryTreelistColorCount, 4);
 	CheckRange(m_treelistColorCount, 1, TREELISTCOLORCOUNT);
-	for (int i=0; i < TREELISTCOLORCOUNT; i++)
+	int i;
+	for (i=0; i < TREELISTCOLORCOUNT; i++)
 	{
 		CString entry;
 		entry.Format(entryTreelistColorN, i);

@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by windirstat.rc
+// Von Microsoft Visual C++ generierte Includedatei.
+// Verwendet durch windirstat.rc
 //
 #define IDD_ABOUTBOX                    100
 #define ID_VIEW_ARRANGE                 127
@@ -112,6 +112,7 @@
 #define IDR_TEXT2                       901
 #define IDB_BITMAP1                     902
 #define IDB_JUNCTIONPOINT               902
+#define IDD_DIALOG_COGNOS_PROGRESS      903
 #define IDC_ALLDRIVES                   1000
 #define IDC_GROUPS                      1000
 #define IDC_ALLLOCALDRIVES              1000
@@ -205,6 +206,9 @@
 #define IDC_SUFFIX                      1223
 #define IDC_CHECK1                      1225
 #define IDC_USEWDSLOCALE                1225
+#define IDC_PROGRESSBAR                 1226
+#define IDC_SYSLINK1                    1227
+#define IDC_MFCLINK1                    1228
 #define ID_FILE_OPENURL                 32771
 #define ID_FILE_OPENRECENT              32772
 #define ID_FILE_REFRESHALL              32773
@@ -274,9 +278,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        903
+#define _APS_NEXT_RESOURCE_VALUE        906
 #define _APS_NEXT_COMMAND_VALUE         33024
-#define _APS_NEXT_CONTROL_VALUE         1226
+#define _APS_NEXT_CONTROL_VALUE         1229
 #define _APS_NEXT_SYMED_VALUE           104
 #endif
 #endif

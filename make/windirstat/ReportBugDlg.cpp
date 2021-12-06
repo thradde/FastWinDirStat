@@ -177,12 +177,12 @@ void CReportBugDlg::OnOK()
 	UpdateData();
 
 	m_recipient= m_to;
-	m_subject.Format(_T("%s - %s: %s"), m_application, GetSeverityString(), m_inAWord);
+	m_subject.Format(_T("%s - %s: %s"), (LPCTSTR)m_application, (LPCTSTR)GetSeverityString(), (LPCTSTR)m_inAWord);
 	m_body.Empty();
 
 	CString s;
 	
-	s.FormatMessage(IDS_FROMsPLATFORMs, m_from, m_platform);
+	s.FormatMessage(IDS_FROMsPLATFORMs, (LPCTSTR)m_from, (LPCTSTR)m_platform);
 	m_body+= s;
 
 	s= m_text;

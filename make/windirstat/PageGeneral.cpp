@@ -105,7 +105,8 @@ BOOL CPageGeneral::OnInitDialog()
 	CArray<LANGID, LANGID> langid;
 	GetApp()->GetAvailableResourceDllLangids(langid);
 
-	for (int i=0; i < langid.GetSize(); i++)
+	int i;
+	for (i=0; i < langid.GetSize(); i++)
 	{
 		k= m_combo.AddString(GetLocaleLanguage(langid[i]));
 		m_combo.SetItemData(k, langid[i]);

@@ -28,6 +28,9 @@
 #include "osspecific.h"
 #include "globalhelpers.h"
 #include "options.h"
+#include "stdint.h"
+#include "..\..\..\CognosNT\CognosAPI\CognosAPI.h"
+#include "CogFileFind.h"
 #include "mountpoints.h"
 #include "helpmap.h"
 
@@ -64,6 +67,7 @@ public:
 	void ReReadMountPoints();
 	bool IsMountPoint(CString path);
 	bool IsJunctionPoint(CString path);
+	bool IsJunctionPoint(const CCogFileFind &finder);	// fast version
 
 	COLORREF AltColor();					// Coloring of compressed items
 	COLORREF AltEncryptionColor();			// Coloring of encrypted items
