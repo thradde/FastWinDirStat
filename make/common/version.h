@@ -48,25 +48,25 @@
 #define BC_RELEASE			// Set this only during official builds. About-box shows x.y.z. File version is x.y.z.buildno
 
 // A release version must not contain debug information. Raise an error!
-#if defined(_DEBUG) && defined(BC_RELEASE)
-  #error BC_RELEASE _and_ _DEBUG are defined. This must not happen. Releases contain no debug information.
-#endif
+//#if defined(_DEBUG) && defined(BC_RELEASE)
+//  #error BC_RELEASE _and_ _DEBUG are defined. This must not happen. Releases contain no debug information.
+//#endif
 
 // This will not change to often, but the years need to be modified
 // regularly, so it can be in one central place
-#define VN_COPYRIGHTSTRING "Copyright (C) 2003-2005 Bernhard Seifert"
+#define VN_COPYRIGHTSTRING "Copyright (C) 2003-2021 Bernhard Seifert"
 
 //-------------------------------------------------------------------
 // Version number. Relevant for BC_RELEASECANDIDATE and BC_RELEASE.
 //
-#define VERNUM_MAJOR		1
-#define VERNUM_MINOR		1
-#define VERNUM_REVISION		2
+#define VERNUM_MAJOR		2
+#define VERNUM_MINOR		0
+#define VERNUM_REVISION		0
 // The following line is automatically incremented by linkcounter.exe.
 // Format: #define blank LINKCOUNT blanks decimal
 // Reset this to zero only when you increment VERNUM_MAJOR/MINOR/REVISION.
 
-#define LINKCOUNT  80
+#define LINKCOUNT  0
 
 //-------------------------------------------------------------------
 // Release candidate number. Relevant for BC_RELEASECANDIDATE.
@@ -82,6 +82,12 @@
 
 #define PPSX(s) #s
 #define PPS(s) PPSX(s)
+
+#ifdef _M_X64
+	#define MACHINE	"64-bit "
+#else
+	#define MACHINE	"32-bit "
+#endif
 
 #ifdef _UNICODE
 	#define UASPEC "Unicode"
@@ -99,7 +105,7 @@
 	#define DRSPEC ""
 #endif
 
-#define VERVARIANT " (" UASPEC DRSPEC ")"
+#define VERVARIANT " (" MACHINE UASPEC DRSPEC ")"
 
 // This is just major.minor.rev.build always!
 #define VN_STRING_DLL	PPS(VERNUM_MAJOR) "." PPS(VERNUM_MINOR) "." PPS(VERNUM_REVISION) "." PPS(VN_BUILD)

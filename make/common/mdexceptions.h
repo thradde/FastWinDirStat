@@ -76,7 +76,7 @@ inline CString MdGetWinerrorText(HRESULT hr)
 	if (dw == NULL)
 	{
 		CString s(MAKEINTRESOURCE(AFX_IDP_NO_ERROR_AVAILABLE));
-		sRet.Format(_T("%s (0x%08lx)"), s, hr);
+		sRet.Format(_T("%s (0x%08lx)"), (LPCTSTR)s, hr);
 	}
 	else 
 	{ 

@@ -22,7 +22,7 @@
 // Last modified: $Date: 2004/11/05 16:53:05 $
 
 #ifndef WINVER				// Allow use of features specific to Windows 95 and Windows NT 4 or later.
-#define WINVER 0x0400		// Change this to the appropriate value to target Windows 98 and Windows 2000 or later.
+#define WINVER 0x0501		// Change this to the appropriate value to target Windows 98 and Windows 2000 or later.
 #endif
 
 #include <afxwin.h>         // MFC core and standard components
@@ -87,9 +87,9 @@ void MyShellExecute(HWND hwnd, LPCTSTR lpOperation, LPCTSTR lpFile, LPCTSTR lpPa
 {
 	CWaitCursor wc;
 
-	UINT h= (UINT)ShellExecute(hwnd, lpOperation, lpFile, lpParameters, lpDirectory, nShowCmd);
+	ULONGLONG h = (ULONGLONG)ShellExecute(hwnd, lpOperation, lpFile, lpParameters, lpDirectory, nShowCmd);
 	if (h <= 32)
-		MdThrowStringExceptionF(_T("ShellExecute failed: %1!s!"), GetShellExecuteError(h));
+		MdThrowStringExceptionF(_T("ShellExecute failed: %1!s!"), (LPCTSTR)GetShellExecuteError((UINT)h));
 }
 
 
