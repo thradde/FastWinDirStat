@@ -57,15 +57,12 @@ ULONGLONG CFileFindWDS::GetCompressedLength() const
 		ret.LowPart = GetApp()->GetComprSizeApi()->GetCompressedFileSize(GetFilePath(), &ret.HighPart);
 		
 		// Check for error
-		if ((GetLastError() != NO_ERROR) && (ret.LowPart == INVALID_FILE_SIZE))
-			// IN case of an error return size from CFileFind object
-			return GetLength();
-		else
+		if (GetLastError() == NO_ERROR)
 			return ret.QuadPart;
 	}
-	else
-		// Use the file size already found by the finder object
-		return GetLength();
+
+	// Use the file size already found by the finder object
+	return GetLength();
 }
 
 // $Log: FileFindWDS.cpp,v $
