@@ -1,0 +1,710 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "../common/version.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""../common/version.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\setup.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_WELCOME DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Willkommen"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Willkommen zum WinDirStat-Installationsprogramm.",
+                    IDC_STATIC,7,7,286,8
+    LTEXT           "Dieser Assistent wird Sie durch den Installationsprozess führen.",
+                    IDC_STATIC,7,42,286,8
+    LTEXT           "Drücken Sie auf Weiter um fortzufahren.\r\nOder drücken Sie auf Abbrechen, um die Installation abzubrechen.",
+                    IDC_STATIC,7,103,286,20
+END
+
+IDD_DESTFOLDER DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Zielverzeichnis"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "...",IDC_BROWSE,258,26,35,14
+    EDITTEXT        IDC_DESTFOLDER,7,26,245,14,ES_AUTOHSCROLL
+    LTEXT           "Drücken Sie auf Weiter um fortzufahren.\r\nOder drücken Sie auf Zurück, um die Einstellungen nachzuprüfen.\r\nOder drücken Sie auf Abbrechen, um die Installation abzubrechen.",
+                    IDC_STATIC,7,95,286,28
+    LTEXT           "Geben Sie das Zielverzeichnis an, in das die WinDirStat-Dateien kopiert werden sollen.",
+                    IDC_STATIC,7,7,286,8
+END
+
+IDD_SHORTCUTS DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Verknüpfungen"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Sollen Verknüpfungen für WinDirStat erstellt werden?",
+                    IDC_STATIC,7,7,286,8
+    CONTROL         "Verknüpfung erstellen im Start-Menü",
+                    IDC_SHORTCUTSTARTMENU,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,33,286,10
+    CONTROL         "Verknüpfung erstellen auf dem Desktop",
+                    IDC_SHORTCUTDESKTOP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,53,286,10
+    CONTROL         "Verknüpfung erstellen im 'Senden an'-Menü",
+                    IDC_SHORTCUTSENDTO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,72,286,10
+    LTEXT           "Drücken Sie auf Weiter um fortzufahren.\r\nOder drücken Sie auf Zurück, um die Einstellungen nachzuprüfen.\r\nOder drücken Sie auf Abbrechen, um die Installation abzubrechen.",
+                    IDC_STATIC,7,95,286,28
+END
+
+IDD_PROGRESS DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Installationsfortschritt"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER,7,78,286,
+                    14
+    LTEXT           "Setup installiert WinDirStat...",IDC_STATIC,7,7,271,8
+    LTEXT           "",IDC_STATUS,7,115,286,8
+END
+
+IDD_READY DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Bereit zum Installieren"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Dürcken Sie auf Fertigstellen, um die Installation zu starten.\r\nOder drücken Sie auf Zurück, um die Einstellungen nachzuprüfen.\r\nOder drücken Sie auf Abbrechen, um die Installation abzubrechen.",
+                    IDC_STATIC,7,95,286,28
+    LTEXT           "Setup ist jetzt bereit, WinDirStat zu installieren.",
+                    IDC_STATIC,7,7,286,8
+END
+
+IDD_FINISHED DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Fertig"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Dürcken Sie auf Fertigstellen, um die Installation abzuschließen.",
+                    IDC_INSTRUCTION,7,111,286,12
+    LTEXT           "Setup hat WinDirStat erfolgreich installiert.",
+                    IDC_MESSAGE,7,7,286,45
+    CONTROL         "WinDirStat jetzt starten",IDC_STARTAPPLICATION,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,71,273,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PATHHASINVALIDCHARS "Der Pfad enthält ungültige Zeichen. Ein Pfad darf keines der folgenden Zeichen enthalten: / * ? "" < >"
+    IDS_PATHISINVALID       "Der Pfad ist ungültig."
+    IDS_DIRECTORYsDOESNOTEXIST 
+                            "Das Verzeichnis %1!s! existiert nicht. Jetzt anlegen?"
+    IDS_CANNOTINSTALLTOSETUPDIR 
+                            "In das Setup-Verzeichnis kann nicht installiert werden. Bitte wählen Sie ein anderes Verzeichnis."
+    IDS_CANNOTCHANGETOss    "Kann nicht ins Verzeichnis %1!s! wechseln.\r\n%2!s!"
+    IDS_CANNOTCREATEDIRss   "Kann das Verzeichnis %1!s! nicht erstellen: %2!s!"
+    IDS_CHOOSEDESTFOLDER    "Zielverzeichnis auswählen"
+    IDS_SETUPSUCCESSFULL    "Setup hat WinDirStat erfolgreich installiert."
+    IDS_ANERROROCCURRED     "Bei der Installation is ein Fehler aufgetreten:\r\n"
+    IDS_PRESSCLOSETOEXIT    "Drücken Sie auf Schließen, um Setup zu verlassen."
+    IDS_CLOSE               "Schließen"
+    IDS_PRESSFINISHTOCOMPLETE 
+                            "Drücken Sie auf Fertigstellen um die Installation abzuschließen."
+    IDS_ERRORCREATINGSHORTCUT "Fehler beim Anlegen einer Verknüpfung: "
+    IDS_FILEsDOESNOTEXIST   "Die Datei %1!s! existiert nicht.\r\nDas Setup muss abgebrochen werden."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_HOWEVERWINDIRSTATOKINs 
+                            "\r\nWie dem auch sei, windirstat.exe wurde erfolgreich installiert und ist einsatzbereit in %1!s!"
+    IDS_COPYINGs            "Kopiere: %1!s!"
+    IDS_SHGETFOLDERPATHdFAILEDs "SHGetFolderPath(%1!d!) fehlgeschlagen: %2!s!"
+    IDS_CREATEINGSTARTMENUSHORTCUT "Erzeuge Start-Menü-Verknüpfung"
+    IDS_CREATEINGDESKTOPSHORTCUT "Erzeuge Desktop-Verknüpfung"
+	IDS_CREATEINGSENDTOSHORTCUT "Erzeuge Senden-An-Verknüpfung"
+	IDS_CANNOTCREATESHORTCUT "Kann keine Verknüpfung erstellen."
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_WELCOME DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Welcome"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Welcome to the WinDirStat Installation Program.",
+                    IDC_STATIC,7,7,286,8
+    LTEXT           "This wizard will guide you through the installation process.",
+                    IDC_STATIC,7,42,286,8
+    LTEXT           "Press Next to continue.\r\nOr press Cancel to abort the installation.",
+                    IDC_STATIC,7,103,286,20
+END
+
+IDD_DESTFOLDER DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Destination Folder"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "...",IDC_BROWSE,258,26,35,14
+    EDITTEXT        IDC_DESTFOLDER,7,26,245,14,ES_AUTOHSCROLL
+    LTEXT           "Press Next to continue.\r\nOr press Previous to review your settings.\r\nOr press Cancel to abort the installation.",
+                    IDC_STATIC,7,95,286,28
+    LTEXT           "Specify the destination folder where the WinDirStat files shall be installed.",
+                    IDC_STATIC,7,7,286,8
+END
+
+IDD_SHORTCUTS DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Shortcuts"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Shall shortcuts for WinDirStat be created?",IDC_STATIC,
+                    7,7,286,8
+    CONTROL         "Create a shortcut in the Start menu",
+                    IDC_SHORTCUTSTARTMENU,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,33,286,10
+    CONTROL         "Create a shortcut on the desktop",IDC_SHORTCUTDESKTOP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,53,286,10
+    CONTROL         "Create a shortcut in the 'Send to'-menu",
+                    IDC_SHORTCUTSENDTO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,72,286,10
+    LTEXT           "Press Next to continue.\r\nOr press Previous to review your settings.\r\nOr press Cancel to abort the installation.",
+                    IDC_STATIC,7,95,286,28
+END
+
+IDD_PROGRESS DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Installation Progress"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER,7,78,286,
+                    14
+    LTEXT           "Setup is installing WinDirStat...",IDC_STATIC,7,7,269,8
+    LTEXT           "",IDC_STATUS,7,115,286,8
+END
+
+IDD_READY DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Ready to Install"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Press Finish to start the installation.\r\nOr press Previous to review your settings.\r\nOr press Cancel to abort the installation.",
+                    IDC_STATIC,7,95,286,28
+    LTEXT           "Setup is now ready to install WinDirStat.",IDC_STATIC,7,
+                    7,286,8
+END
+
+IDD_FINISHED DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Finished"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Press Finish to complete the installation.",
+                    IDC_INSTRUCTION,7,111,286,12
+    LTEXT           "Setup has successfully installed WinDirStat.",
+                    IDC_MESSAGE,7,7,286,45
+    CONTROL         "Start WinDirStat now",IDC_STARTAPPLICATION,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,71,269,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\setup.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_WELCOME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 293
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+
+    IDD_DESTFOLDER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 293
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+
+    IDD_SHORTCUTS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 293
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+
+    IDD_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 293
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+
+    IDD_READY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 293
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+
+    IDD_FINISHED, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 293
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PATHHASINVALIDCHARS "The path contains invalid characters. A path must not contain one of these characters: / * ? "" < >"
+    IDS_PATHISINVALID       "The path is invalid."
+    IDS_DIRECTORYsDOESNOTEXIST 
+                            "The directory %1!s! does not exist. Create now?"
+    IDS_CANNOTINSTALLTOSETUPDIR 
+                            "Cannot install to the setup directory. Please choose a different folder."
+    IDS_CANNOTCHANGETOss    "Cannot change to %1!s!\r\n%2!s!"
+    IDS_CANNOTCREATEDIRss   "Cannot create directory %1!s!: %2!s!"
+    IDS_CHOOSEDESTFOLDER    "Choose destination folder"
+    IDS_SETUPSUCCESSFULL    "Setup has successfully installed WinDirStat."
+    IDS_ANERROROCCURRED     "An error occurred during the installation:\r\n"
+    IDS_PRESSCLOSETOEXIT    "Press Close to exit setup."
+    IDS_CLOSE               "Close"
+    IDS_PRESSFINISHTOCOMPLETE "Press Finish to complete the installation."
+    IDS_ERRORCREATINGSHORTCUT "Error creating shortcut: "
+    IDS_FILEsDOESNOTEXIST   "The file %1!s! does not exist.\r\nThe setup must be aborted."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_HOWEVERWINDIRSTATOKINs 
+                            "\r\nHowever, windirstat.exe has successfully been installed and is ready to use in %1!s!"
+    IDS_COPYINGs            "Copying: %1!s!"
+    IDS_SHGETFOLDERPATHdFAILEDs "SHGetFolderPath(%1!d!) failed: %2!s!"
+    IDS_CREATEINGSTARTMENUSHORTCUT "Creating start menu shortcut"
+    IDS_CREATEINGDESKTOPSHORTCUT "Creating desktop shortcut"
+	IDS_CREATEINGSENDTOSHORTCUT "Creating Send to shortcut"
+    IDS_CANNOTCREATESHORTCUT "Cannot create shortcut."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// French (France) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+#ifdef _WIN32
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_WELCOME DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Bienvenue"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Bienvenue sur le programme d'installation de WinDirStat.",
+                    IDC_STATIC,7,7,286,8
+    LTEXT           "Ce programme va vous guider tout au long de l'installation.",
+                    IDC_STATIC,7,42,286,8
+    LTEXT           "Appuyer ""Suivant"" pour continuer.\r\nOu pressez ""Annuler"" pour annuler cette installation.",
+                    IDC_STATIC,7,103,286,20
+END
+
+IDD_DESTFOLDER DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Répertoire d'installation"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "...",IDC_BROWSE,258,26,35,14
+    EDITTEXT        IDC_DESTFOLDER,7,26,245,14,ES_AUTOHSCROLL
+    LTEXT           "Appuyez ""Suivant"" pour continuer.\r\nOu pressez ""Précédent"" pour revenir en arrière.\r\nOu pressez ""Annuler"" pour annuler l'installation.",
+                    IDC_STATIC,7,95,286,28
+    LTEXT           "Indiquez le répertoire où seront placés les fichiers de WinDirStat.",
+                    IDC_STATIC,7,7,286,8
+END
+
+IDD_SHORTCUTS DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Raccourcis"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Où faut-il placer les raccourcis vers WinDirStat ?",
+                    IDC_STATIC,7,7,286,8
+    CONTROL         "Placer un raccourci dans le menu ""Démarrer""",
+                    IDC_SHORTCUTSTARTMENU,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,33,286,10
+    CONTROL         "Placer un raccourci sur le bureau",IDC_SHORTCUTDESKTOP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,53,286,10
+    CONTROL         "Placer un raccourci dans le menu ""Send to""",
+                    IDC_SHORTCUTSENDTO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,72,286,10
+    LTEXT           "Appuyez ""Suivant"" pour continuer.\r\nOu pressez ""Précédent"" pour revenir en arrière.\r\nOu pressez ""Annuler"" pour annuler l'installation.",
+                    IDC_STATIC,7,95,286,28
+END
+
+IDD_PROGRESS DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Progression de l'installation"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER,7,78,286,
+                    14
+    LTEXT           "Le programme installe WinDirStat...",IDC_STATIC,7,7,269,
+                    8
+    LTEXT           "",IDC_STATUS,7,115,286,8
+END
+
+IDD_READY DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Prêt à l'installation"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Appuyez ""Installer"" pour installer le programme.\r\nOu pressez ""Précédent"" pour revenir en arrière.\r\nOu pressez ""Annuler"" pour annuler l'installation.",
+                    IDC_STATIC,7,95,286,28
+    LTEXT           "Le programme est prêt à installer WinDirStat.",
+                    IDC_STATIC,7,7,286,8
+END
+
+IDD_FINISHED DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Terminé"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Appuyez ""Terminer"" pour finir l'installation",
+                    IDC_INSTRUCTION,7,111,286,12
+    LTEXT           "WinDirStat a été installé",IDC_MESSAGE,7,7,286,45
+    CONTROL         "Démarrer WinDirStat maintenant",IDC_STARTAPPLICATION,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,71,269,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PATHHASINVALIDCHARS "Le chemin du dossier contient des caractères non autorisés. Le chemin ne doit pas contenir les caractères suivants : / * ? "" < >"
+    IDS_PATHISINVALID       "Le répertoire est invalide."
+    IDS_DIRECTORYsDOESNOTEXIST 
+                            "Le répertoire %1!s! n'existe pas. Voulez-vous le créer?"
+    IDS_CANNOTINSTALLTOSETUPDIR 
+                            "Impossible d'installer dans le répertoire qui a été choisi. Veuillez en choisir un autre."
+    IDS_CANNOTCHANGETOss    "Impossible d'aller à %1!s!\r\n%2!s!"
+    IDS_CANNOTCREATEDIRss   "Impossible de créer le répertoire %1!s!: %2!s!"
+    IDS_CHOOSEDESTFOLDER    "Choississez le répertoire d'installation"
+    IDS_SETUPSUCCESSFULL    "Installation de WinDirStat réussie."
+    IDS_ANERROROCCURRED     "Une erreur s'est produite durant l'installation :\r\n"
+    IDS_PRESSCLOSETOEXIT    "Appuyez ""Fermer"" pour arrêter l'installation"
+    IDS_CLOSE               "Fermer"
+    IDS_PRESSFINISHTOCOMPLETE 
+                            "Appuyez ""Terminer"" pour finir l'installation."
+    IDS_ERRORCREATINGSHORTCUT "Erreur dans la création du raccourci : "
+    IDS_FILEsDOESNOTEXIST   "Le fichier %1!s! n'existe pas.\r\nL'installation doit être annulée."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_HOWEVERWINDIRSTATOKINs 
+                            "\r\nCependant, windirstat.exe a été enregistré et installé dans %1!s! et peut donc être utilisé !"
+    IDS_COPYINGs            "Copie de : %1!s!"
+    IDS_SHGETFOLDERPATHdFAILEDs "SHGetFolderPath(%1!d!) échec : %2!s!"
+    IDS_CREATEINGSTARTMENUSHORTCUT 
+                            "Création des raccourcis dans le menu ""Démarrer""..."
+    IDS_CREATEINGDESKTOPSHORTCUT "Création d'un raccourci sur le bureau..."
+	IDS_CREATEINGSENDTOSHORTCUT "Création des raccourcis dans le menu ""Send To""..."
+    IDS_CANNOTCREATESHORTCUT "Impossible de créer un raccourci !"
+END
+
+#endif    // French (France) resources
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+// Polish (Poland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PLK)
+#ifdef _WIN32
+LANGUAGE LANG_POLISH, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_WELCOME DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Witamy"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Witaj w programie instalacyjnym WinDirStat.",
+                    IDC_STATIC,7,7,286,8
+    LTEXT           "Ten kreator przeprowadzi Ciê przez proces instalacji progamu.",
+                    IDC_STATIC,7,42,286,8
+    LTEXT           "Aby kontynuowaæ naciœnij Dalej.\r\nNaciœnij Anuluj aby przerwaæ instalacjê.",
+                    IDC_STATIC,7,103,286,20
+END
+
+IDD_DESTFOLDER DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Katalog instalacyjny"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "...",IDC_BROWSE,258,26,35,14
+    EDITTEXT        IDC_DESTFOLDER,7,26,245,14,ES_AUTOHSCROLL
+    LTEXT           "Aby kontynuowaæ naciœnij Dalej.\r\nNaciœnij Wstecz aby zmieniæ ustawienia.\r\nNaciœnij Anuluj aby przerwaæ instalacjê.",
+                    IDC_STATIC,7,95,286,28
+    LTEXT           "Okreœl katalog, w którym bêd¹ zainstalowane pliki programu WinDirStat.",
+                    IDC_STATIC,7,7,286,8
+END
+
+IDD_SHORTCUTS DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Skróty"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Czy utworzyæ skróty dla programu WinDirStat?",IDC_STATIC,
+                    7,7,286,8
+    CONTROL         "Utwórz skrót w Menu Start",
+                    IDC_SHORTCUTSTARTMENU,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,33,286,10
+    CONTROL         "Utwórz skrót na Pulpicie",IDC_SHORTCUTDESKTOP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,53,286,10
+    CONTROL         "Utwórz skrót w menu 'Wyœlij do'",
+                    IDC_SHORTCUTSENDTO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,72,286,10
+    LTEXT           "Aby kontynuowaæ naciœnij Dalej.\r\nNaciœnij Wstecz aby zmieniæ ustawienia.\r\nNaciœnij Anuluj aby przerwaæ instalacjê.",
+                    IDC_STATIC,7,95,286,28
+END
+
+IDD_PROGRESS DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Postêp instalacji"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER,7,78,286,
+                    14
+    LTEXT           "Program WinDirStat jest instalowany...",IDC_STATIC,7,7,269,8
+    LTEXT           "",IDC_STATUS,7,115,286,8
+END
+
+IDD_READY DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Gotowy do instalacji"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Naciœnij Zakoñcz aby rozpocz¹æ instalacjê.\r\nNaciœnij Wstecz aby zmieniæ ustawienia.\r\nNaciœnij Anuluj aby przerwaæ instalacjê.",
+                    IDC_STATIC,7,95,286,28
+    LTEXT           "Instalator jest gotowy do instalacji programu WinDirStat.",IDC_STATIC,7,
+                    7,286,8
+END
+
+IDD_FINISHED DIALOGEX 0, 0, 300, 130
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Instalacja zakoñczona"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Naciœnij Zakoñcz aby zakoñczyæ instalacjê.",
+                    IDC_INSTRUCTION,7,111,286,12
+    LTEXT           "Program WinDirStat zosta³ pomyœlnie zainstalowany.",
+                    IDC_MESSAGE,7,7,286,45
+    CONTROL         "Uruchom WinDirStat",IDC_STARTAPPLICATION,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,71,269,10
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PATHHASINVALIDCHARS "Œcie¿ka zawiera zabronione znaki. Œcie¿ka nie mo¿e zawieraæ nastêpuj¹cych znaków: / * ? "" < >"
+    IDS_PATHISINVALID       "Œcie¿ka jest niepoprawna."
+    IDS_DIRECTORYsDOESNOTEXIST 
+                            "Katalog %1!s! nie istnieje. Czy utworzyæ nowy?"
+    IDS_CANNOTINSTALLTOSETUPDIR 
+                            "Nie mo¿na zainstalowaæ programu w wybranym katalogu. Proszê wybraæ inny katalog."
+    IDS_CANNOTCHANGETOss    "Nie mo¿na zmieniæ na %1!s!\r\n%2!s!"
+    IDS_CANNOTCREATEDIRss   "Nie mo¿na utworzyæ katalogu %1!s!: %2!s!"
+    IDS_CHOOSEDESTFOLDER    "Wybierz katalog docelowy"
+    IDS_SETUPSUCCESSFULL    "Program WinDirStat zosta³ pomyœlnie zainstalowany."
+    IDS_ANERROROCCURRED     "Podczas instalacji wyst¹pi³ b³¹d:\r\n"
+    IDS_PRESSCLOSETOEXIT    "Naciœnij Zamknij aby wyjœæ z programu."
+    IDS_CLOSE               "Zamknij"
+    IDS_PRESSFINISHTOCOMPLETE "Naciœnij Zakoñcz aby zakoñczyæ instalacjê."
+    IDS_ERRORCREATINGSHORTCUT "B³¹d tworzenia skrótu: "
+    IDS_FILEsDOESNOTEXIST   "Plik %1!s! nie istnieje.\r\nInstalacja bêdzie przerwana!"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_HOWEVERWINDIRSTATOKINs 
+                            "\r\nPomimo problemów, windirstat.exe zosta³ pomyœlnie zainstalowany i jest gotowy do uruchomienia w katalogu %1!s!"
+    IDS_COPYINGs            "Kopiowanie: %1!s!"
+    IDS_SHGETFOLDERPATHdFAILEDs "SHGetFolderPath(%1!d!) jest uszkodzony: %2!s!"
+    IDS_CREATEINGSTARTMENUSHORTCUT "Tworzenie skrótu w Menu Start"
+    IDS_CREATEINGDESKTOPSHORTCUT "Tworzenie skrótu na Pulpicie"
+    IDS_CANNOTCREATESHORTCUT "Nie mo¿na utworzyæ skrótu."
+END
+
+#endif    // Polish (Poland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\setup.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

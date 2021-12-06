@@ -1,0 +1,88 @@
+// setup.rc2 - resources Microsoft Visual C++ does not edit directly
+//
+// WinDirStat - Directory Statistics
+// Copyright (C) 2003-2005 Bernhard Seifert
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// Author: bseifert@users.sourceforge.net, bseifert@daccord.net
+//
+// Last modified: $Date: 2005/04/17 18:13:42 $
+
+#ifdef APSTUDIO_INVOKED
+#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// setup.exe Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION VN_FILEVERSION_EXE
+ PRODUCTVERSION VN_PRODVERSION_EXE
+ FILEFLAGSMASK 0x3fL
+ FILEFLAGS VN_FILEFLAG_EXE
+ FILEOS VN_FILEOS_EXE
+ FILETYPE VFT_APP
+ FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Seifert"
+            VALUE "FileDescription", "WinDirStat Setup Application"
+            VALUE "FileVersion", VN_STRING_DLL
+            VALUE "InternalName", "setup"
+            VALUE "LegalCopyright", VN_COPYRIGHTSTRING
+            VALUE "OriginalFilename", "setup.exe"
+            VALUE "ProductName", "WinDirStat"
+            VALUE "ProductVersion", VN_STRING_DLL
+        END
+        BLOCK "040704e4"
+        BEGIN
+            VALUE "CompanyName", "Seifert"
+            VALUE "FileDescription", "WinDirStat Setup-Programm"
+            VALUE "FileVersion", VN_STRING_DLL
+            VALUE "InternalName", "setup"
+            VALUE "LegalCopyright", VN_COPYRIGHTSTRING
+            VALUE "OriginalFilename", "setup.exe"
+            VALUE "ProductName", "WinDirStat"
+            VALUE "ProductVersion", VN_STRING_DLL
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252, 0x407, 1252
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+
+// $Log: setup.rc2,v $
+// Revision 1.6  2005/04/17 18:13:42  assarbad
+// - Moved some "static" resource strings into the respective *.rc2 files
+// - Corrected typo in Russian DLL
+// - Modified behavior of VERSIONINFO for DLLs. "version.h" has changed therefore
+// ... for details as usual, see the changelog.
+//
+// Revision 1.5  2005/04/10 16:49:23  assarbad
+// - Some smaller fixes including moving the resource string version into the rc2 files
+//
+// Revision 1.4  2004/11/05 16:53:05  assarbad
+// Added Date and History tag where appropriate.
+//

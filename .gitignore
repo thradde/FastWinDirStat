@@ -1,0 +1,17 @@
+*.aps
+*.suo
+*.ncb
+*.sdf
+*.vcxproj.user
+*.bak
+*.exe
+x64
+.vs
+Debug
+Release
+UnicodeDebug
+UnicodeRelease
+udebug
+urelease
+urelease_x64
+ipch
