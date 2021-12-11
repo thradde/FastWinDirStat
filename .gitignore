@@ -16,3 +16,4 @@ urelease
 urelease_x64
 Output
 ipch
+*.ipch
