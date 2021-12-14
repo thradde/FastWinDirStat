@@ -13,6 +13,12 @@
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -21,8 +27,10 @@
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 IDR_MAINFRAME           ICON                    "res\\icon1.ico"
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -46,67 +54,8 @@ BEGIN
     CONTROL         "",IDC_PROGRESSBAR,"msctls_progress32",WS_BORDER,18,65,270,14
     LTEXT           "CognosNT fast NTFS file scanner.",IDC_STATIC,18,18,270,8
     LTEXT           "Copyright (c) 2021 T. Radde, IDEAL Software GmbH, Neuss, Germany",IDC_STATIC,18,36,270,8
-    CONTROL         "www.idealsoftware.com",IDC_MFCLINK1,"MfcLink",0x0,18,48,78,12
+    CONTROL         "www.idealsoftware.com",IDC_MFCLINK1,"MfcLink",0x0,18,48,127,12
 END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// DESIGNINFO
-//
-
-#ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
-BEGIN
-    IDD_DIALOG_COGNOS_PROGRESS, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 303
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 80
-    END
-END
-#endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// AFX_DIALOG_LAYOUT
-//
-
-IDD_DIALOG_COGNOS_PROGRESS AFX_DIALOG_LAYOUT
-BEGIN
-    0
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog Info
-//
-
-IDD_DIALOG_COGNOS_PROGRESS DLGINIT
-BEGIN
-    IDC_MFCLINK1, 0x37c, 185, 0
-0x4d3c, 0x4346, 0x694c, 0x6b6e, 0x555f, 0x6c72, 0x773e, 0x7777, 0x692e, 
-0x6564, 0x6c61, 0x6f73, 0x7466, 0x6177, 0x6572, 0x632e, 0x6d6f, 0x2f3c, 
-0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7255, 0x3e6c, 0x4d3c, 0x4346, 0x694c, 
-0x6b6e, 0x555f, 0x6c72, 0x7250, 0x6665, 0x7869, 0x683e, 0x7474, 0x3a70, 
-0x2f2f, 0x2f3c, 0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7255, 0x506c, 0x6572, 
-0x6966, 0x3e78, 0x4d3c, 0x4346, 0x694c, 0x6b6e, 0x545f, 0x6f6f, 0x746c, 
-0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x694c, 0x6b6e, 0x545f, 0x6f6f, 0x746c, 
-0x7069, 0x3c3e, 0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7546, 0x6c6c, 0x6554, 
-0x7478, 0x6f54, 0x6c6f, 0x6974, 0x3e70, 0x4146, 0x534c, 0x3c45, 0x4d2f, 
-0x4346, 0x694c, 0x6b6e, 0x465f, 0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 
-0x746c, 0x7069, "\076" 
-    0
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog
-//
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 273, 199
 STYLE DS_SETFONT | WS_POPUP | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
@@ -314,84 +263,16 @@ END
 #ifdef APSTUDIO_INVOKED
 GUIDELINES DESIGNINFO
 BEGIN
+    IDD_DIALOG_COGNOS_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 303
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+
     IDD_ABOUTBOX, DIALOG
     BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 266
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 192
-    END
-
-    IDD_SELECTDRIVES, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 269
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 175
-    END
-
-    IDD_DELETE_WARNING, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 269
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 143
-    END
-
-    IDD_MODALAPISHUTTLE, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 179
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 83
-    END
-
-    IDD_PAGE_CLEANUPS, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 373
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 195
-    END
-
-    IDD_PAGE_TREELIST, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 373
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 192
-    END
-
-    IDD_PAGE_TREEMAP, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 373
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 195
-    END
-
-    IDD_PAGE_GENERAL, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 373
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 195
-    END
-
-    IDD_REPORTBUG, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 353
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 226
-    END
-
-    IDD_PAGE_REPORT, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 373
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 195
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -402,8 +283,36 @@ END
 // AFX_DIALOG_LAYOUT
 //
 
+IDD_DIALOG_COGNOS_PROGRESS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 IDD_ABOUTBOX AFX_DIALOG_LAYOUT
 BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_COGNOS_PROGRESS DLGINIT
+BEGIN
+    IDC_MFCLINK1, 0x37c, 185, 0
+0x4d3c, 0x4346, 0x694c, 0x6b6e, 0x555f, 0x6c72, 0x773e, 0x7777, 0x692e, 
+0x6564, 0x6c61, 0x6f73, 0x7466, 0x6177, 0x6572, 0x632e, 0x6d6f, 0x2f3c, 
+0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7255, 0x3e6c, 0x4d3c, 0x4346, 0x694c, 
+0x6b6e, 0x555f, 0x6c72, 0x7250, 0x6665, 0x7869, 0x683e, 0x7474, 0x3a70, 
+0x2f2f, 0x2f3c, 0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7255, 0x506c, 0x6572, 
+0x6966, 0x3e78, 0x4d3c, 0x4346, 0x694c, 0x6b6e, 0x545f, 0x6f6f, 0x746c, 
+0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x694c, 0x6b6e, 0x545f, 0x6f6f, 0x746c, 
+0x7069, 0x3c3e, 0x464d, 0x4c43, 0x6e69, 0x5f6b, 0x7546, 0x6c6c, 0x6554, 
+0x7478, 0x6f54, 0x6c6f, 0x6974, 0x3e70, 0x4146, 0x534c, 0x3c45, 0x4d2f, 
+0x4346, 0x694c, 0x6b6e, 0x465f, 0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 
+0x746c, 0x7069, "\076" 
     0
 END
 
